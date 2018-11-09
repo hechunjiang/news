@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#DD001B</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#DD001B</color>
+
+    <!--增加-->
+    <color name="colorWhite">#ffffff</color>
+    <color name="blcak">#000000</color>
+    <color name="c999999">#999999</color>
+    <color name="tab_tv_color_cli">#FD3598</color>
+    <color name="item_list_user_content_color">#4e4e4e</color>
+    <color name="title_bar_line">#dcdcdc</color>
+    <color name="Cffa42f">#FFA42F</color>
+    <color name="c333333">#333333</color>
+    <color name="cff999999">#ff999999</color>
+    <color name="cffe4e4e4">#ffe4e4e4</color>
+    <color name="ccdcdcd">#CDCDCD</color>
+    <color name="c333">#ff333333</color>
+    <color name="cf43574">#f43574</color>
+    <color name="videoimg_miss">#f2f2f2</color>
+    <color name="c_f2f2f2">#f2f2f2</color>
+    <color name="line_color">#e4e4e4</color>
+    <color name="cfd35">#FD3598</color>
+    <color name="c9a9b9f">#9a9b9f</color>
+    <color name="c272a2f">#272a2f</color>
+    <color name="cff0000">#ff0000</color>
+    <color name="btn_login_nor_bg">#c1c1c1</color>
+    <color name="invition_num">#4A44E9</color>
+    <color name="treasure_box">#EBBA5C</color>
+    <color name="statusBarColor">#888888</color>
+    <color name="color_def">@color/themeColorRed</color>
+    <color name="themeColorRed">#ff0000</color>
+    <color name="c666666">#666666</color>
+    <color name="j1_">#FF9C7C3E</color>
+    <color name="j_">#EBBA5C</color>
+    <color name="task_un_bar">#ffcdcdcd</color>
+    <color name="cb2b2">#b2b2b2</color>
+    <color name="c_9999999">#ff999999</color>
+    <color name="personSave">#ffecbb5d</color>
+    <color name="task_bar">@color/colorAccent</color>
+    <color name="c_cdcdcd">#cdcdcd</color>
+    <color name="cffc2c2c2">#ffc2c2c2</color>
+    <color name="cE4E4E4">#E4E4E4</color>
+
+</resources>

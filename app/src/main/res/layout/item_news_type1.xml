@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImage="@drawable/def_image"
+        fresco:placeholderImageScaleType="centerInside"
+        fresco:roundAsCircle="false"
+        fresco:roundedCornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="66dp"
+        android:textColor="@color/c333333"
+        android:textSize="17sp"
+        android:text="xxxxxxxxx" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="26dp">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:drawableLeft="@mipmap/newshour"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:text="sdfasd"
+            android:textColor="@color/cffc2c2c2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="21dp"
+            android:layout_toLeftOf="@id/tv_share"
+            android:drawableLeft="@mipmap/zan"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="8099"
+            android:textColor="@color/cffc2c2c2" />
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/iv_more"
+            android:drawableLeft="@mipmap/share"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:paddingRight="4dp"
+            android:text="12k"
+            android:textColor="@color/cffc2c2c2" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/cE4E4E4" />
+</LinearLayout>

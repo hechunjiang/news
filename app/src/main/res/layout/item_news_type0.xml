@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_left"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/def_image"
+            fresco:placeholderImageScaleType="centerInside"
+            fresco:roundedCornerRadius="10dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_middle"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/def_image"
+            fresco:placeholderImageScaleType="centerInside"
+            fresco:roundedCornerRadius="10dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_right"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/def_image"
+            fresco:placeholderImageScaleType="centerInside"
+            fresco:roundedCornerRadius="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="47dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/c333333"
+        android:textSize="17sp"
+        tools:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:drawableLeft="@mipmap/newshour"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:text="sdfasd"
+            android:textColor="@color/cffc2c2c2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="21dp"
+            android:layout_toLeftOf="@id/tv_share"
+            android:drawableLeft="@mipmap/zan"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="8099"
+            android:textColor="@color/cffc2c2c2" />
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/iv_more"
+            android:drawableLeft="@mipmap/share"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:paddingRight="4dp"
+            android:text="12k"
+            android:textColor="@color/cffc2c2c2" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/cE4E4E4" />
+</LinearLayout>

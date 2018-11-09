@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.news.mobile.view.MyRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginBottom="17dp"
+                    android:background="#DD001B">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/mine_bg"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="42dp"
+                            android:padding="10dp"
+                            android:text="@string/log_in_me"
+                            android:textColor="@color/c333333"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/sv_left"
+                                    android:layout_width="70dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    fresco:sCenterBottomTextColor="@color/c999999"
+                                    fresco:sCenterBottomTextSize="13sp"
+                                    fresco:sCenterBottomTextString="@string/me_coins"
+                                    fresco:sCenterTextColor="@color/c333333"
+                                    fresco:sCenterTextSize="20sp"
+                                    fresco:sCenterTextString="5342"
+                                    fresco:sDividerLineType="none"
+                                    fresco:sUseRipple="false" />
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/sv_middle"
+                                    android:layout_width="70dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="60dp"
+                                    android:layout_marginRight="60dp"
+                                    fresco:sCenterBottomTextColor="@color/c999999"
+                                    fresco:sCenterBottomTextSize="13sp"
+                                    fresco:sCenterBottomTextString="Blance"
+                                    fresco:sCenterTextColor="@color/c333333"
+                                    fresco:sCenterTextSize="20sp"
+                                    fresco:sCenterTextString="0$"
+                                    fresco:sDividerLineType="none"
+                                    fresco:sUseRipple="false" />
+
+                                <com.allen.library.SuperTextView
+                                    android:id="@+id/sv_right"
+                                    android:layout_width="70dp"
+                                    android:layout_height="80dp"
+                                    android:gravity="center"
+                                    fresco:sCenterBottomTextColor="@color/c999999"
+                                    fresco:sCenterBottomTextSize="13sp"
+                                    fresco:sCenterBottomTextString="Total"
+                                    fresco:sCenterTextColor="@color/c333333"
+                                    fresco:sCenterTextSize="20sp"
+                                    fresco:sCenterTextString="0$"
+                                    fresco:sDividerLineType="none"
+                                    fresco:sUseRipple="false" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/sv_head"
+                        android:layout_width="61dp"
+                        android:layout_height="61dp"
+                        android:layout_gravity="center|top"
+                        android:layout_marginTop="12dp"
+                        fresco:placeholderImage="@mipmap/def_avatar"
+                        fresco:roundAsCircle="true" />
+
+                </FrameLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:background="@color/c_f2f2f2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_exchange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="39dp"
+                        android:drawablePadding="-14dp"
+                        android:drawableTop="@mipmap/exchange"
+                        android:gravity="center"
+                        android:text="@string/exchange"
+                        android:textColor="@color/c999999"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_invit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginRight="60dp"
+                        android:drawablePadding="-14dp"
+                        android:drawableTop="@mipmap/invit"
+                        android:gravity="center"
+                        android:text="@string/invit"
+                        android:textColor="@color/c999999"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="39dp"
+                        android:drawablePadding="-14dp"
+                        android:drawableTop="@mipmap/message"
+                        android:gravity="center"
+                        android:text="@string/message"
+                        android:textColor="@color/c999999"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:background="@color/c_f2f2f2" />
+
+                <TextView
+                    android:id="@+id/tv_invition_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="23dp"
+                    android:drawableEnd="@mipmap/me_l_right"
+                    android:drawableRight="@mipmap/me_l_right"
+                    android:text="@string/me_l_enter_your"
+                    android:textColor="@color/c333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_agreement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="34dp"
+                    android:drawableEnd="@mipmap/me_l_right"
+                    android:drawableRight="@mipmap/me_l_right"
+                    android:text="@string/me_agree"
+                    android:textColor="@color/c333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_callme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="34dp"
+                    android:drawableEnd="@mipmap/me_l_right"
+                    android:drawableRight="@mipmap/me_l_right"
+                    android:text="@string/me_l_contact"
+                    android:textColor="@color/c333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="34dp"
+                    android:drawableEnd="@mipmap/me_l_right"
+                    android:drawableRight="@mipmap/me_l_right"
+                    android:text="@string/me_l_setting"
+                    android:textColor="@color/c333333"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </ScrollView>
+    </com.news.mobile.view.MyRefreshLayout>
+
+</LinearLayout>

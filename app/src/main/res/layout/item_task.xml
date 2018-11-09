@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/task_header" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The first invitation"
+                android:textColor="@color/c333"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/task_bar"
+                    android:textSize="17sp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_task"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="41"
+                    android:progressDrawable="@drawable/progress_color_horizontal" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/cb2b2"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_go"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/task_go"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingRight="7dp"
+            android:text="@string/go"
+            android:textColor="@color/task_bar"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="4dp"
+        android:background="#E4E4E4" />
+
+</LinearLayout>

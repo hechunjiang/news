@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/web_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/action_bar_back_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@mipmap/icon_back" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/facebook_commont"
+                android:layout_marginRight="14dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tw_commont"
+                android:layout_marginRight="14dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/wates_commont"
+                android:layout_marginRight="14dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/more_commont"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/web_title"
+        android:background="@color/cffe4e4e4" />
+
+    <LinearLayout
+        android:id="@+id/ll_middle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/view">
+
+        <com.news.mobile.view.MyRefreshLayout
+            android:id="@+id/web_sr"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <com.news.mobile.view.MyRecyclerView
+                android:id="@+id/rv_commit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.news.mobile.view.MyRecyclerView>
+
+        </com.news.mobile.view.MyRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/cffe4e4e4"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_input"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Say  Someing..."
+                    android:textSize="16sp"
+                    android:textColor="@color/c999999"
+                    android:background="@drawable/bg_commont"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="13dp"
+                    android:layout_marginLeft="14dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_commont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/commont"
+                        android:layout_centerInParent="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_commont_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="251"
+                        android:background="@drawable/bg_commont_num"
+                        android:gravity="center"
+                        android:textSize="8sp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:textColor="#fff"
+                        android:layout_marginLeft="16dp"
+                        />
+
+                </RelativeLayout>
+
+                <CheckBox
+                    android:id="@+id/iv_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomCheckBoxTheme"
+                    android:layout_marginRight="14dp"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/f_ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <!--<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/video_banner_adView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/videoimg_miss"-->
+        <!--ads:adSize="SMART_BANNER"-->
+        <!--ads:adUnitId="@string/google_banner_id" />-->
+
+        <ImageButton
+            android:id="@+id/close_ad"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/login_close" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_reward_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="110dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/tv_gold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/Cffa42f"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/Cffa42f"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/video_progress_layout"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="90dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/gold_progress" />
+
+        <com.news.mobile.view.MyNewsProgress
+            android:id="@+id/video_progress"
+            android:layout_width="47dp"
+            android:layout_height="47dp" />
+    </RelativeLayout>
+
+
+    <com.news.mobile.view.EmptyLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/web_title"
+        android:visibility="gone">
+
+    </com.news.mobile.view.EmptyLayout>
+
+    <ProgressBar
+        android:id="@+id/web_progress"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/web_title"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal" />
+
+
+</RelativeLayout>

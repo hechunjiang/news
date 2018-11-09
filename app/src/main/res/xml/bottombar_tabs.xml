@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@mipmap/foryou_background_nu"
+        id="@+id/news"
+        inActiveColor="@color/c999999"
+        title="@string/news" />
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@mipmap/video_nu"
+        id="@+id/me_l_daily"
+        inActiveColor="@color/c999999"
+        title="@string/me_l_daily" />
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@mipmap/me_nu"
+        id="@+id/me"
+        inActiveColor="@color/c999999"
+        title="@string/me" />
+</tabs>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/c333333"
+        android:textStyle="bold"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="59dp"
+        android:textSize="17sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="11dp"
+        tools:text="In A Rare Move,Teamsters Are Juping Into The Tree."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp">
+
+        <TextView
+            android:id="@+id/tv_author_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/c999999"
+            tools:text="buzzfeed,2hours ago"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/c999999"
+            tools:text="2.5W"
+            android:drawablePadding="4dp"
+            android:drawableLeft="@mipmap/list_look"/>
+
+    </LinearLayout>
+
+    <com.news.mobile.view.MyWebView
+        android:id="@+id/wv_news_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/cffe4e4e4"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="13dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_commit_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="14dp"
+        android:gravity="center_vertical"
+        android:visibility="invisible">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviews(251)"
+            android:textSize="17sp"
+            android:layout_weight="1"
+            android:textColor="@color/c333"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="All Reviews"
+            android:textColor="@color/c999999"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</LinearLayout>
