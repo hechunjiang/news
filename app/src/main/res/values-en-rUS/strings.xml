@@ -117,6 +117,14 @@
     <string name="task_go_select">Claim</string>
     <string name="task_go_un">Claimed</string>
     <string name="send">send</string>
+    <string name="copy">Copy</string>
     <string name="me_shared_code">Share your W &amp; E code to social media to invite more， get contribution from your friends</string>
+    <string name="sharedCancel">Sharing cancellation</string>
+    <string name="foryou">For You</string>
+    <string name="earn_basic">Basic</string>
+    <string name="earn_permanent">Permanent</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_we_code">My WE Code</string>
+
 
 </resources>

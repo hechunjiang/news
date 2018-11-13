@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawablePadding="14dp"
-                android:drawableTop="@mipmap/wates"
+                android:drawableTop="@mipmap/watess"
                 android:gravity="center_horizontal"
                 android:text="WhatsApp"
                 android:textColor="@color/blcak"

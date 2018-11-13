@@ -65,42 +65,39 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/cffe4e4e4"/>
+                    android:background="@color/cffe4e4e4" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/c333333"
-                    android:textStyle="bold"
+                    android:layout_marginBottom="11dp"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="59dp"
-                    android:textSize="17sp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="11dp"
-                    android:text="In A Rare Move,Teamsters Are Juping Into The Tree."/>
+                    android:textColor="@color/c333333"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="14dp">
+                    android:layout_marginLeft="14dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
+                        android:layout_weight="1"
                         android:textColor="@color/c999999"
-                        android:text="buzzfeed,2hours ago"
-                        android:layout_weight="1"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="@color/c999999"
-                        android:text="2.5W"
+                        android:drawableLeft="@mipmap/list_look"
                         android:drawablePadding="4dp"
-                        android:drawableLeft="@mipmap/list_look"/>
+                        android:textColor="@color/c999999"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -108,16 +105,16 @@
                     android:id="@+id/wv_news_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"/>
+                    android:layout_marginTop="14dp" />
 
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/cffe4e4e4"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
-                    android:layout_marginTop="13dp"/>
+                    android:layout_marginTop="13dp"
+                    android:background="@color/cffe4e4e4" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -165,12 +162,12 @@
         android:id="@+id/ll_reward_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="110dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="110dp"
         android:orientation="vertical"
         android:visibility="invisible">
 
@@ -198,12 +195,12 @@
         android:id="@+id/video_progress_layout"
         android:layout_width="47dp"
         android:layout_height="47dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="90dp"
         android:visibility="invisible">
 
         <ImageView

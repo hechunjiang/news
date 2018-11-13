@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission
@@ -45,7 +44,7 @@
         </activity>
         <activity android:name=".main.home.activity.MainActivity" />
         <activity android:name=".main.news.activity.NewsDetailsActivity" />
-        <activity android:name=".main.news.activity.NewsDetailsRvActivity"/>
+        <activity android:name=".main.news.activity.NewsDetailsRvActivity" />
         <activity android:name=".main.mine.activity.PrivacyActivity" />
         <activity android:name=".main.mine.activity.FindPassActivity" />
 
@@ -53,14 +52,46 @@
 
         <activity android:name=".main.mine.activity.EarnActivity" />
         <activity android:name=".main.web.activity.WebActivity" />
-        <activity android:name=".main.web.activity.MyWebActivity">
-
-        </activity>
+        <activity android:name=".main.web.activity.MyWebActivity" />
         <activity android:name=".main.mine.activity.MessageActivity" />
         <activity android:name=".main.mine.activity.FeedbackActivity" />
         <activity android:name=".main.mine.activity.SettingActivity" />
         <activity android:name=".main.mine.activity.PersonActivity" />
 
+        <!-- twitter分享 -->
+        <receiver
+            android:name=".tplatform.twitter.MyResultReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_SUCCESS" />
+                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_FAILURE" />
+                <action android:name="com.twitter.sdk.android.tweetcomposer.TWEET_COMPOSE_CANCEL" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.news.mobile.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider425325671330602"
+            android:exported="true" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

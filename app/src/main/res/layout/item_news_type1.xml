@@ -32,7 +32,7 @@
         android:layout_marginRight="66dp"
         android:textColor="@color/c333333"
         android:textSize="17sp"
-        android:text="xxxxxxxxx" />
+       />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,7 +48,6 @@
             android:drawableLeft="@mipmap/newshour"
             android:drawablePadding="6dp"
             android:gravity="center"
-            android:text="sdfasd"
             android:textColor="@color/cffc2c2c2"
             android:textSize="13sp" />
 
@@ -63,7 +62,6 @@
             android:gravity="center"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
-            android:text="8099"
             android:textColor="@color/cffc2c2c2" />
 
         <TextView
@@ -76,7 +74,6 @@
             android:drawablePadding="4dp"
             android:gravity="center"
             android:paddingRight="4dp"
-            android:text="12k"
             android:textColor="@color/cffc2c2c2" />
 
         <ImageView

@@ -114,13 +114,13 @@ public class FrescoUtils {
                 if (bitmap != null) {
                     Boolean savesucess = saveBitmap(bitmap, localSavePath + "shareImage.jpg");
                     if (savesucess) {
-                        //保存成功处理
-//                        LogUtils.logLocalD("msg---imagepath:" + localSavePath);
                         if (l != null) {
+
                             l.saveImageOk();
                         }
                     } else {
                         //保存失败处理
+                        LogUtil.showLog("saveImage_failse" + savesucess);
                     }
 
                 } else {

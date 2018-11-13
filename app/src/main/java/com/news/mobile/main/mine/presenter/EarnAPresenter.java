@@ -3,7 +3,7 @@ package com.news.mobile.main.mine.presenter;
 import android.annotation.SuppressLint;
 
 import com.google.gson.Gson;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseResponse;
 import com.news.mobile.entiyt.ApprenticePageDataResponse;

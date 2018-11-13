@@ -54,7 +54,7 @@ public class FeedbackActivity extends BaseActivity<FeedbackPresenter, FeefbackMo
         et_input = findViewById(R.id.et_input);
         mEmptyLayout = findViewById(R.id.mEmptyLayout);
 
-        mEmptyLayout.setErrorType(EmptyLayout.LOADING, -1);
+       // mEmptyLayout.setErrorType(EmptyLayout.LOADING, -1);
 
         mDialog = UploadProgressDialog.initGrayDialog(this);
         mDialog.setCancelable(false);
@@ -97,7 +97,8 @@ public class FeedbackActivity extends BaseActivity<FeedbackPresenter, FeefbackMo
 
     @Override
     public void initObject() {
-
+        setMVP();
+        mPresenter.getFeedClassifyList();
     }
 
     @Override

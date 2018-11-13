@@ -9,15 +9,15 @@ import com.news.mobile.base.BaseRequest;
  */
 public class NewsAddGoodRequest extends BaseRequest {
 
-    private String new_id;
+    private String news_id;
     private String du_type;
 
-    public String getNew_id() {
-        return new_id;
+    public String getNews_id() {
+        return news_id;
     }
 
-    public void setNew_id(String new_id) {
-        this.new_id = new_id;
+    public void setNews_id(String news_id) {
+        this.news_id = news_id;
     }
 
     public String getDu_type() {

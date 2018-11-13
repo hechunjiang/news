@@ -13,6 +13,8 @@ import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.InfoRequest;
 import com.news.mobile.entiyt.request.LoginRequest;
 import com.news.mobile.entiyt.request.NewsAddGoodRequest;
+import com.news.mobile.entiyt.request.NewsCommontListRequest;
+import com.news.mobile.entiyt.request.NewsCommontRequest;
 import com.news.mobile.entiyt.request.NewsDetailRequest;
 import com.news.mobile.entiyt.request.NewsGoldRequest;
 import com.news.mobile.entiyt.request.NewsListRequest;
@@ -23,6 +25,8 @@ import com.news.mobile.entiyt.request.ResetPassRequst;
 import com.news.mobile.entiyt.request.ShareNewsRequest;
 import com.news.mobile.entiyt.request.ShareVisitRequest;
 import com.news.mobile.entiyt.request.SharedRequest;
+import com.news.mobile.entiyt.request.SharedVistRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.entiyt.request.TaskRequestAdVideo;
@@ -257,6 +261,17 @@ public class MyRetrofit {
 
     }
 
+    public void requestShareVisit(SharedVistRequest request, DataCallBack callBack) {
+        request.setTime(nowTime());
+        request.setNonce_str(nonceStr());
+        request.setSign(signStr(request.getTime(), request.getNonce_str(), SignJson.signShareVisit(request)));
+        mHttpService.requestSharedVisit(getHeaderMap(), request)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callBack);
+
+    }
 
     /**
      * 获取用户信息
@@ -690,6 +705,51 @@ public class MyRetrofit {
         request.setNonce_str(nonceStr());
         request.setSign(signStr(request.getTime(), request.getNonce_str(), SignJson.signAddGood(request)));
         mHttpService.addGood(getHeaderMap(), request)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callBack);
+    }
+
+    /**
+     * 评论列表
+     *
+     * @param request
+     * @param callBack
+     */
+    public void commonList(NewsCommontListRequest request, DataCallBack callBack) {
+        request.setTime(nowTime());
+        request.setNonce_str(nonceStr());
+        request.setSign(signStr(request.getTime(), request.getNonce_str(), SignJson.signCommontList(request)));
+        mHttpService.commontList(getHeaderMap(), request)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callBack);
+    }
+
+    /**
+     * 评论
+     *
+     * @param request
+     * @param callBack
+     */
+    public void commont(NewsCommontRequest request, DataCallBack callBack) {
+        request.setTime(nowTime());
+        request.setNonce_str(nonceStr());
+        request.setSign(signStr(request.getTime(), request.getNonce_str(), SignJson.signCommont(request)));
+        mHttpService.commont(getHeaderMap(), request)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(callBack);
+    }
+
+    public void taskFinish(TaskFinishRequest request, DataCallBack callBack) {
+        request.setTime(nowTime());
+        request.setNonce_str(nonceStr());
+        request.setSign(signStr(request.getTime(), request.getNonce_str(), SignJson.signTaskFinish(request)));
+        mHttpService.taskFinish(getHeaderMap(), request)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

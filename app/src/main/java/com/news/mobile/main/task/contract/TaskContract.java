@@ -4,10 +4,12 @@ import com.news.mobile.base.BaseModel;
 import com.news.mobile.base.BasePresenter;
 import com.news.mobile.base.BaseView;
 import com.news.mobile.entiyt.InfoResponse;
+import com.news.mobile.entiyt.TaskFinishResponse;
 import com.news.mobile.entiyt.TaskListNewResponse;
 import com.news.mobile.entiyt.TaskListResponse;
 import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.InfoRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.http.DataCallBack;
@@ -34,6 +36,7 @@ public interface TaskContract {
         public abstract void getOpenTreasureBox(TaskRequest taskRequest, DataResponseCallback<Map<String, String>> callback);
 
 
+        public abstract void taskFinish(TaskFinishRequest request, DataResponseCallback<TaskFinishResponse> callBack);
     }
 
     interface View extends BaseView {
@@ -47,6 +50,8 @@ public interface TaskContract {
         void showGoldTime(int time);
 
         void showGoldCome(int count, int type, String masgess);
+
+        void taskFinish(TaskFinishResponse response);
 
     }
 
@@ -65,6 +70,7 @@ public interface TaskContract {
 
         public abstract void getOpenTreasureBox(int id);//开宝箱
 
+        public abstract void taskFinish(TaskFinishRequest request);
 
     }
 }

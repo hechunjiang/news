@@ -51,9 +51,10 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
         MultiDex.install(this);
         mContext = this;
-        setFresco();//fresco必须初始化
+
         initTiwtter();
-//        initFacebook();
+        setFresco();//fresco必须初始化
+        initFacebook();
 
         UMConfigure.init(this, "5be27cf2f1f5564573000492", getChannel(), UMConfigure.DEVICE_TYPE_PHONE, "");
 
@@ -63,6 +64,7 @@ public class MyApplication extends MultiDexApplication {
 
         initGoogleDevice();
     }
+
 
     private void initTiwtter() {
         TwitterConfig config = new TwitterConfig.Builder(this)

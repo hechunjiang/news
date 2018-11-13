@@ -18,6 +18,7 @@ import com.news.mobile.main.advert.presenter.AdvertPresenter;
 import com.news.mobile.main.home.activity.MainActivity;
 import com.news.mobile.utils.Common;
 import com.news.mobile.utils.Eyes;
+import com.news.mobile.utils.LogUtil;
 import com.news.mobile.utils.NetWorkUtils;
 import com.news.mobile.utils.ToastUtils;
 import com.news.mobile.utils.UserSpCache;
@@ -28,7 +29,7 @@ public class AdVertyActivity extends BaseActivity<AdvertPresenter, AdVertModel> 
     private TextView ad_count_time_tv;
     private UserSpCache mUserSpCache;
     private CountTimeUtils mCountTimeUtils;
-    private boolean isTimeDown = false;
+    private boolean isTimeDown = false, tempLogin = false;
 
     @Override
     public int getLayoutId() {
@@ -46,7 +47,7 @@ public class AdVertyActivity extends BaseActivity<AdvertPresenter, AdVertModel> 
         mCountTimeUtils.start();
         Glide.with(this).load(R.drawable.homepagelog).into(gif_logo);
 
-        mUserSpCache.putFloat(Common.PROGRESS,0f);
+        mUserSpCache.putFloat(Common.PROGRESS, 0f);
     }
 
     @Override

@@ -3,13 +3,15 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 27
+
+
     defaultConfig {
         applicationId "com.news.mobile"
         minSdkVersion 16
         targetSdkVersion 27
         multiDexEnabled true
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     dexOptions {
@@ -29,7 +31,6 @@ android {
             buildConfigField("String", "BASE_WEB_URL", "\"http://com.masjmzs.com/\"")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-
         }
 
         debug {
@@ -43,10 +44,12 @@ android {
             //测试服
             buildConfigField("String", "BASE_URL", "\"http://news.hesheng138.com/\"")
             buildConfigField("String", "BASE_IMAGE_URL", "\"http://news.hesheng138.com/\"")
-            buildConfigField("String", "BASE_WEB_URL", "\"http://news.hesheng138.com/\"")
+            buildConfigField("String", "BASE_WEB_URL", "\"http://newscom.hesheng138.com/\"")
 
         }
     }
+
+
 }
 
 dependencies {
@@ -92,9 +95,10 @@ dependencies {
         exclude group: 'com.parse.bolts', module: 'bolts-android'
         //exclude group: 'com.android.support', module: 'multidex'
     }
-    //twitter
+    //twitter 登录
     implementation 'com.twitter.sdk.android:twitter:3.1.1'
     implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+
     //linkedin
     implementation project(':linkedin-sdk')
     //google服务

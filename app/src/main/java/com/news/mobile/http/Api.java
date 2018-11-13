@@ -64,9 +64,12 @@ public class Api {
     public static final String key_code = "key_code";
     public static final String F_CODE = "f_code";
     public static final String DEBUG = "debug";
-    public static final String NEW_ID = "new_id";
+    public static final String NEW_ID = "news_id";
+
     public static final String NEWS_ID = "new_id";
     public static final String KEY_CODE = "key_code";
+    public static final String SIZE = "size";
+    public static final String ORDER = "order";
 
 
     //请求地址
@@ -101,6 +104,8 @@ public class Api {
     public static final String GET_NEWS_LIST = "app/news/todayNews";//获取新闻列表
     public static final String PARSE_NEWS = "app/news/like";//新闻点赞
     public static final String NEWS_SHARCONTENT = "app/Activateshare/newsShare";//新闻点赞
+    public static final String TASK_FINISH = "app/mission_new/handler"; //任务结束，领取金币
+    public static final String SHARED_VISITED ="app/Datapre/shareVisit";//分享计数
 
 
     //意见反馈
@@ -117,6 +122,8 @@ public class Api {
     public static final String NEWS_DETAIL = "app/news/getNewsDetail";
     public static final String NEWS_GOLD = "app/mission_new/handler";
     public static final String NEWS_ADD_GOOD = "app/news/like";
+    public static final String NEWS_COMMONT_LIST = "app/Comment/getList";
+    public static final String NEWS_COMMONT = "app/Comment/push";
 
 
 }

@@ -14,7 +14,7 @@ import com.news.mobile.entiyt.NewsDetailResponse;
  * 代码不优雅，写锤子代码
  */
 
-@Database(entities = {NewsDetailResponse.DataBean.class},version = 1)
+@Database(entities = {NewsDetailResponse.DataBean.class},version = 1,exportSchema = false)
 public  abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;

@@ -8,7 +8,7 @@ import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.news.mobile.BuildConfig;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.R;
 import com.news.mobile.entiyt.TwitterRegResponse;
 import com.news.mobile.entiyt.event.ShareResponseEvent;
@@ -40,10 +40,6 @@ import java.net.URL;
 
 import retrofit2.Call;
 
-
-/**
- * Created by sfy. on 2018/4/25 0025.
- */
 
 public class TwitterLogin {
 
@@ -177,12 +173,9 @@ public class TwitterLogin {
                 @Override
                 public void saveImageOk() {
 
-//                    LogUtils.logLocalD("msg---ID::::" + BuildConfig.APPLICATION_ID + ".fileProvider");
                     Uri imageUri = FileProvider.getUriForFile(activity,
                             BuildConfig.APPLICATION_ID + ".fileProvider",
                             new File(imagePath.getAbsolutePath() + "shareImage.jpg"));
-//                    LogUtils.logLocalD("msg---shareImage:::-" + imageUri.toString());
-
                     shareByTweetComposer(activity, jsShareType, imageUri);
                 }
 

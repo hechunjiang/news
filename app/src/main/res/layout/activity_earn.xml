@@ -81,7 +81,7 @@
                     android:layout_height="27dp"
                     android:background="@drawable/invition_left"
                     android:gravity="center"
-                    android:text="Basic"
+                    android:text="@string/earn_basic"
                     android:textColor="@color/invition_num"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@id/view3"
@@ -93,7 +93,7 @@
                     android:layout_height="27dp"
                     android:background="@drawable/invition_right"
                     android:gravity="center"
-                    android:text="Permanent"
+                    android:text="@string/earn_permanent"
                     android:textColor="@color/invition_num"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@id/view3"
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="My Friends"
+                    android:text="@string/my_friends"
                     android:textColor="@color/colorWhite"
                     android:textSize="19sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -173,7 +173,6 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="0"
                             android:textColor="@color/blcak"
                             android:textSize="20sp" />
 
@@ -203,7 +202,6 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="0"
                             android:textColor="@color/blcak"
                             android:textSize="20sp" />
 
@@ -232,7 +230,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="0"
+
                             android:textColor="@color/blcak"
                             android:textSize="20sp" />
 
@@ -256,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="23dp"
-                        android:text="My WE Code"
+                        android:text="@string/my_we_code"
                         android:textColor="#d2d2d2"
                         android:textSize="15sp" />
 
@@ -266,7 +264,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:text=""
                         android:textColor="@color/invition_num"
                         android:textSize="27sp"
                         android:textStyle="bold" />
@@ -281,7 +278,7 @@
                         android:gravity="center"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="Copy"
+                        android:text="@string/copy"
                         android:textColor="@color/colorWhite"
                         android:textSize="13sp" />
 
@@ -365,7 +362,7 @@
         android:layout_marginTop="26dp"
         android:background="@mipmap/invition_start"
         android:gravity="center"
-        android:text="Start Inviting Friends"
+        android:text="@string/startinvalit"
         android:textColor="@color/blcak"
         android:textSize="20sp"
         android:textStyle="bold|italic" />

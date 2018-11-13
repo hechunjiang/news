@@ -114,7 +114,14 @@
     <string name="task_info">%1$s has withdrawed %2$s dollars</string>
     <string name="task_go_select">Claim</string>
     <string name="send">ส่ง</string>
+    <string name="copy">Copy</string>
     <string name="task_go_un">Claimed</string>
     <string name="me_shared_code">แชร์รหัสการเชิญของคูณในFacebook มีเพื่อนเยอะจะได้รับเงินเยอะ</string>
+    <string name="sharedCancel">ยกเลิกแชร์</string>
+    <string name="foryou">สำหรับท่าน</string>
+    <string name="earn_basic">พื้นฐาน</string>
+    <string name="earn_permanent">ถาวร</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_we_code">My WE Code</string>
 
 </resources>

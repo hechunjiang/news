@@ -44,7 +44,8 @@
     <com.news.mobile.view.MyRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:descendantFocusability="afterDescendants" >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_task"

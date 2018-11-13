@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.MyApplication;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;
@@ -164,9 +164,16 @@ public class MineFragment extends BaseFragment<MineFPresenter, MineFModel> imple
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshTips(String str) {
         if (Common.REFRESH_USERINFO.equals(str)) {
+            LogUtil.showLog("登陆");
             mPresenter.getPersonMsg();
         }
     }

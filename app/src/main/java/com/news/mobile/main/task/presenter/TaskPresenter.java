@@ -5,10 +5,12 @@ import com.news.mobile.R;
 import com.news.mobile.base.BaseResponse;
 import com.news.mobile.entiyt.GetGoldTimeResponse;
 import com.news.mobile.entiyt.InfoResponse;
+import com.news.mobile.entiyt.TaskFinishResponse;
 import com.news.mobile.entiyt.TaskListNewResponse;
 import com.news.mobile.entiyt.TaskListResponse;
 import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.InfoRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.http.Api;
@@ -132,6 +134,26 @@ public class TaskPresenter extends TaskContract.Presenter {
                 } else if (response.getCode() == -1000001) {
                     ToastUtils.showLong(mContext, mContext.getString(R.string.network_unavailable_try_again_later));
                 }
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Override
+    public void taskFinish(TaskFinishRequest request) {
+        mModel.taskFinish(request, new DataResponseCallback<TaskFinishResponse>() {
+            @Override
+            public void onSucceed(TaskFinishResponse taskListResponse) {
+                mView.taskFinish(taskListResponse);
+            }
+
+            @Override
+            public void onFail(BaseResponse response) {
+                mView.showErrorTip(response.getCode(), response.getMsg());
             }
 
             @Override

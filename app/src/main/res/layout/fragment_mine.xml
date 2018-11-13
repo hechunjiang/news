@@ -186,7 +186,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="12"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toStartOf="@+id/tv_me_balance"
@@ -215,7 +214,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="12"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toStartOf="@+id/tv_me_balance"
@@ -248,7 +246,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="12"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"
                             app:layout_constraintEnd_toStartOf="@+id/tv_me_balance"
@@ -461,7 +458,7 @@
                             android:paddingLeft="29dp"
                             android:paddingRight="29dp"
                             android:paddingTop="8dp"
-                            android:text="Copy"
+                            android:text="@string/copy"
                             android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
                     </LinearLayout>
@@ -500,7 +497,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@mipmap/wates" />
+                            android:src="@mipmap/watess" />
                     </LinearLayout>
 
 

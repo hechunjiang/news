@@ -1,5 +1,6 @@
 package com.news.mobile.main.news.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.google.gson.Gson;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseFragment;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.entiyt.NewsInfoResponse;
+import com.news.mobile.entiyt.NewsSharedContent;
 import com.news.mobile.entiyt.request.NewsListRequest;
 import com.news.mobile.entiyt.request.PariseRequest;
 import com.news.mobile.entiyt.request.ShareNewsRequest;
@@ -18,6 +24,10 @@ import com.news.mobile.main.news.activity.NewsDetailsRvActivity;
 import com.news.mobile.main.news.contract.NewsContract;
 import com.news.mobile.main.news.model.NewsListModel;
 import com.news.mobile.main.news.presenter.NewsListPresenter;
+import com.news.mobile.tplatform.facebook.FaceBookShare;
+import com.news.mobile.tplatform.linkedin.LinkedInPlatform;
+import com.news.mobile.tplatform.twitter.TwitterLogin;
+import com.news.mobile.tplatform.whatsapp.WhatsAppShare;
 import com.news.mobile.utils.Common;
 import com.news.mobile.utils.CommonUtils;
 import com.news.mobile.utils.LogUtil;
@@ -28,6 +38,8 @@ import com.news.mobile.view.MyRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +54,14 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
     private Drawable like, unlike;
     private CustomShareDialog mCustomShareDialog;
     private NewsInfoResponse.DataBeanX.DataBean dataBean;
+    TwitterLogin mTwitterLogin;
+    FaceBookShare mFaceBookShare;
+    private WhatsAppShare whatsAppShare;
 
 
     @Override
     protected int getLayoutResource() {
+
         return R.layout.fragment_news;
     }
 
@@ -56,6 +72,8 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
         mEmptyLayout = v.findViewById(R.id.mEmptyLayout);
         unlike = getResources().getDrawable(R.mipmap.zan);
         like = getResources().getDrawable(R.mipmap.zaned);
+
+        whatsAppShare = new WhatsAppShare(mContext);
 
         unlike.setBounds(0, 0, unlike.getMinimumWidth(), unlike.getMinimumHeight());
         like.setBounds(0, 0, like.getMinimumWidth(), like.getMinimumHeight());
@@ -82,10 +100,10 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
                 public void onShare(int type) {
                     if (type != Common.SHARE_TYPE_REPORT) {
                         //获取分享数据
-                        mPresenter.getSharedConttent(getShareNewRequest(dataBean.getId(), dataBean.getKeywords()));
+                        mPresenter.getSharedConttent(getShareNewRequest(dataBean.getId(), dataBean.getKeywords()), type);
                     } else {
-                        //举报  网络链接
-//                        mReportPresenter.videoReport(Video_id);
+                        //举报
+
                     }
                 }
             });
@@ -102,15 +120,19 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
     @Override
     public void initEvents() {
         initRefreshListen();
+        mEmptyLayout.setOnEmptyRefreshLisenter(new EmptyLayout.onEmptyRefreshLisenter() {
+            @Override
+            public void onEmptyRefresh() {
+                mPresenter.getNewsList(true);
+            }
+        });
         //item点击事件
         inforAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 NewsInfoResponse.DataBeanX.DataBean dataBean = (NewsInfoResponse.DataBeanX.DataBean) adapter.getData().get(position);
                 if (!CommonUtils.isFastClick()) {
-                    if (!"".equals(dataBean.getHref())) {
-//                        NewsDetailsRvActivity.toThis(getContext(), dataBean);
-                    }
+                    NewsDetailsRvActivity.toThis(getContext(), dataBean);
                 }
 
             }
@@ -235,7 +257,8 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
         if (isRefresh) {
             refresh_view.finishRefresh();
             if (infoResponse.getData().getData().size() == 0) {
-                mEmptyLayout.setErrorType(EmptyLayout.NO_DATA, EmptyLayout.NO_DATA);
+                refresh_view.setVisibility(View.GONE);
+                mEmptyLayout.setErrorType(EmptyLayout.NO_DATA, EmptyLayout.NET_ODATA);
             } else {
                 inforAdapter.setNewData(dataBeans);
             }
@@ -250,6 +273,94 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
     @Override
     public void pariseSuccess() {
         ToastUtils.showShort(mContext, getResources().getString(R.string.success));
+    }
+
+    @Override
+    public void getSharedConttentSuccess(final NewsSharedContent content, int type) {
+        String jsShare = mPresenter.getShareJson(content, type);
+        final JsShareType jsShareType = new Gson().fromJson(jsShare, JsShareType.class);
+
+        if (type == Common.SHARE_TYPE_TWITTER) {
+            if (mTwitterLogin == null) mTwitterLogin = new TwitterLogin();
+            mTwitterLogin.setTwitterShareLisenter(new TwitterLogin.TwitterShareLisenter() {
+                @Override
+                public void getShareOk(String response) {
+                    LogUtil.showLog("twtter分享成功");
+                    mPresenter.shareVisit(dataBean.getId());
+
+                }
+
+                @Override
+                public void getShareFail(String response) {
+                    LogUtil.showLog("twtter分享失败");
+                    ToastUtils.showShort(mContext, getString(R.string.sharedFialed));
+                }
+
+                @Override
+                public void getShareCancel(String response) {
+                    LogUtil.showLog("twtter分享取消");
+                    ToastUtils.showShort(mContext, getString(R.string.sharedCancel));
+                }
+            });
+            mTwitterLogin.twitterShare(getActivity(), jsShareType, Common.TWITTER_SHARE_IAMGE);
+        } else if (type == Common.SHARE_TYPE_FACEBOOK) {
+            if (mFaceBookShare == null)
+                mFaceBookShare = new FaceBookShare(getActivity(), new FacebookCallback() {
+                    @Override
+                    public void onSuccess(Object o) {
+                        LogUtil.showLog("face 分享成功");
+                        mPresenter.shareVisit(dataBean.getId());
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        LogUtil.showLog("face 分享失败");
+                        ToastUtils.showShort(mContext, getString(R.string.sharedCancel));
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        LogUtil.showLog("face 分享取消");
+                        ToastUtils.showShort(mContext, getString(R.string.sharedFialed));
+                    }
+                });
+
+
+            mFaceBookShare.share(jsShareType);
+        } else if (type == Common.SHARE_TYPE_LINKEDIN) {
+            LinkedInPlatform mLinkedInPlatform = new LinkedInPlatform(getActivity());
+            mLinkedInPlatform.linkedInShareLisenter(new LinkedInPlatform.linkedInShareLisenter() {
+                @Override
+                public void getShareOk(String response) {
+                    //ToastUtils.showShort(mContext, getString(R.string.sharedSuccess));
+                    mPresenter.shareVisit(dataBean.getId());
+                }
+
+                @Override
+                public void getShareFail(String response) {
+                    ToastUtils.showShort(mContext, getString(R.string.sharedFialed));
+                }
+            });
+            mLinkedInPlatform.linkedInShare(jsShareType);
+        } else if (type == Common.SHARE_TYPE_WHATS) {
+            whatsAppShare.shareLink(jsShareType.getUrl());
+            mPresenter.shareVisit(dataBean.getId());
+        }
+    }
+
+    @Override
+    public void sharednewsSuccess() {
+          ToastUtils.showShort(mContext,getResources().getString(R.string.success));
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (mFaceBookShare != null) {
+            mFaceBookShare.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 

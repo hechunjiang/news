@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <com.news.mobile.view.VerticalTextview
@@ -12,7 +14,6 @@
         android:gravity="center"
         android:paddingBottom="9dp"
         android:paddingTop="9dp"
-        android:text="XX收了20名徒弟"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
 
@@ -38,6 +39,7 @@
         android:drawablePadding="5dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
@@ -90,7 +92,6 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
             android:gravity="center"
-            android:text="03:00:00"
             android:textColor="@color/colorWhite"
             android:textSize="17sp" />
 

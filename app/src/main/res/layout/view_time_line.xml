@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@mipmap/task_day"
             android:gravity="center"
-            android:text="100"
+
             android:textColor="@color/colorWhite"
             android:textSize="11sp" />
 
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="6dp"
-        android:text="Day1"
+
         android:textColor="@color/c999999"
         android:textSize="11sp" />
 </LinearLayout>

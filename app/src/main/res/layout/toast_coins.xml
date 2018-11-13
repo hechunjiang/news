@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="4dp"
             android:gravity="center"
-            android:text="sadfasfd"
+            android:text="xxxxx"
             android:textColor="@color/colorWhite"
             android:textSize="19sp" />
 

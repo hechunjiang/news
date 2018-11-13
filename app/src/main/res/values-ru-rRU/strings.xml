@@ -113,6 +113,13 @@
     <string name="task_go_select">Claim</string>
     <string name="task_go_un">Claimed</string>
     <string name="send">Отправить</string>
+    <string name="copy">Copy</string>
     <string name="me_shared_code">Поделитесь своим WE кодом с facebook и другими платформами, чтобы пригласить больше друзей, вы получите щедрую награду за монеты.</string>
+    <string name="sharedCancel">Отменять поделиться</string>
+    <string name="foryou">Для Вас</string>
+    <string name="earn_basic">Базис</string>
+    <string name="earn_permanent">Перманентный</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_we_code">My WE Code</string>
 
 </resources>

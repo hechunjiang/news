@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseResponse;
 import com.news.mobile.entiyt.ShareResponse;

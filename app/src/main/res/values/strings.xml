@@ -1,9 +1,9 @@
 <resources>
     <!--谷歌登录所需的client id-->
-    <string name="server_client_id">771976934042-224mtl67s9oikian429sbqgul1uaqej5.apps.googleusercontent.com</string>
+    <string name="server_client_id">25829066311-c4nfpmrihs6cant98cj7i40qps2eelfv.apps.googleusercontent.com</string>
     <!--facebook denglu-->
-    <string name="facebook_app_id">1549016045220845</string>
-    <string name="fb_login_protocol_scheme">fb143712423144077</string>
+    <string name="facebook_app_id">425325671330602</string>
+    <string name="fb_login_protocol_scheme">fb425325671330602</string>
     <!--facebook denglu-->
     <string name="app_name">MyNews</string>
     <string name="back">返回</string>
@@ -122,17 +122,25 @@
     <string name="please_say_something">说点什么...</string>
     <string name="success">成功</string>
     <string name="sharedSuccess">分享成功</string>
+    <string name="copy">Copy</string>
     <string name="sharedFialed">分享失败</string>
     <string name="open_the_treasure_box" translatable="false">Open The Treasure box</string>
     <string name="task_info">%1$s提现%2$s美元</string>
     <string name="task_go_select">领取</string>
     <string name="task_go_un">已领取</string>
-
+    <string name="sharedCancel">Sharing cancellation</string>
+    <string name="foryou">ForYou</string>
+    <string name="earn_permanent">Permanent</string>
 
     <!--新增-->
     <string name="invit">邀请</string>
-
+    <string name="earn_basic">Basic</string>
     <!-- 新闻详情新增 -->
     <string name="send">发送</string>
+    <string name="review_size">Reviews(%1$d)</string>
+    <string name="my_friends">My Friends</string>
+    <string name="my_we_code">My WE Code</string>
+    <string name="startinvalit">Start Inviting Friends</string>
+
 
 </resources>

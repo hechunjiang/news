@@ -1,6 +1,6 @@
 package com.news.mobile.main.mine.contract;
 
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.base.BaseModel;
 import com.news.mobile.base.BasePresenter;
 import com.news.mobile.base.BaseView;

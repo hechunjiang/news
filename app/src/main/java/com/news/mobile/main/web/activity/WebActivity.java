@@ -35,7 +35,7 @@ import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.github.lzyzsd.jsbridge.DefaultHandler;
 import com.google.gson.Gson;
 import com.linkedin.platform.LISessionManager;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.MyApplication;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;

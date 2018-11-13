@@ -7,6 +7,6 @@ package com.news.mobile.tplatform;
 public class PlatformConstant {
     public static final String FACEBOOK_KEY = "247493505824451";  //facebook应用编号
 
-    public static final String TIWTTER_KEY = "4ohbJGzVUcXvvtIraf1dFnnvZ";
-    public static final String TIWTTER_SECRET = "4vffjlf6jioEYzF4m8ObeRjmgDiuFg12uhTWkPgMRhmxwxOKJT";
+    public static final String TIWTTER_KEY = "cSvU9erzUVIqRByAxSLu1QVgl";
+    public static final String TIWTTER_SECRET = "eJfvNRGY1rNztNACCZ9buyNesHz2qQWFK7Nl7nvy6ud6tUFmYa ";
 }

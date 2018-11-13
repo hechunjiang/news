@@ -17,7 +17,7 @@ import com.facebook.share.model.ShareVideo;
 import com.facebook.share.model.ShareVideoContent;
 import com.facebook.share.widget.ShareDialog;
 import com.news.mobile.BuildConfig;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.utils.CommonUtils;
 import com.news.mobile.utils.LogUtil;
 import com.news.mobile.utils.ToastUtils;

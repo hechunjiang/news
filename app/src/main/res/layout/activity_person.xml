@@ -111,7 +111,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:gravity="center"
-                android:text="0/8"
                 android:textColor="@color/c_9999999" />
 
 
@@ -223,7 +222,6 @@
             android:layout_alignRight="@+id/signature"
             android:layout_marginBottom="14dp"
             android:gravity="center"
-            android:text="0/80"
             android:textColor="@color/c_9999999" />
 
 

@@ -2,11 +2,7 @@ package com.news.mobile.view;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -18,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseResponse;
 import com.news.mobile.entiyt.ShareResponse;
@@ -32,8 +28,6 @@ import com.news.mobile.tplatform.twitter.TwitterLogin;
 import com.news.mobile.utils.Common;
 import com.news.mobile.utils.LogUtil;
 import com.news.mobile.utils.ToastUtils;
-
-import java.util.List;
 
 /**
  * 作者：created by hcj

@@ -3,12 +3,14 @@ package com.news.mobile.main.task.model;
 import com.google.gson.Gson;
 import com.news.mobile.base.BaseResponse;
 import com.news.mobile.entiyt.InfoResponse;
+import com.news.mobile.entiyt.TaskFinishResponse;
 import com.news.mobile.entiyt.TaskListNewResponse;
 import com.news.mobile.entiyt.TaskListResponse;
 import com.news.mobile.entiyt.TaskOpenBoxResponse;
 import com.news.mobile.entiyt.TaskSingInResponse;
 import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.InfoRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.http.DataCallBack;
@@ -136,6 +138,27 @@ public class TaskModel extends TaskContract.Model {
                 cacheBack.onFail(baseResponse);
             }
 
+        });
+    }
+
+    @Override
+    public void taskFinish(TaskFinishRequest request,final DataResponseCallback<TaskFinishResponse> callBack) {
+        getRetrofit().taskFinish(request, new DataCallBack() {
+            @Override
+            public void onComplete() {
+                callBack.onComplete();
+            }
+
+            @Override
+            public void onSucceed(String json) {
+                TaskFinishResponse newsResponse = new Gson().fromJson(json, TaskFinishResponse.class);
+                callBack.onSucceed(newsResponse);
+            }
+
+            @Override
+            public void onFail(BaseResponse baseResponse) {
+                callBack.onFail(baseResponse);
+            }
         });
     }
 

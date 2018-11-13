@@ -9,6 +9,8 @@ import com.news.mobile.entiyt.request.FeedBackRequest;
 import com.news.mobile.entiyt.request.GetCodeRequest;
 import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.NewsAddGoodRequest;
+import com.news.mobile.entiyt.request.NewsCommontListRequest;
+import com.news.mobile.entiyt.request.NewsCommontRequest;
 import com.news.mobile.entiyt.request.NewsDetailRequest;
 import com.news.mobile.entiyt.request.NewsGoldRequest;
 import com.news.mobile.entiyt.request.NewsListRequest;
@@ -17,6 +19,8 @@ import com.news.mobile.entiyt.request.PushTokenRequest;
 import com.news.mobile.entiyt.request.ResetPassRequst;
 import com.news.mobile.entiyt.request.ShareNewsRequest;
 import com.news.mobile.entiyt.request.ShareVisitRequest;
+import com.news.mobile.entiyt.request.SharedVistRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.entiyt.request.TaskRequestAdVideo;
 import com.news.mobile.entiyt.request.TempLoginRequest;
@@ -385,6 +389,7 @@ public class SignJson {
     public static String signNewsGold(NewsGoldRequest request) {
         ParmsUtils parmsUtils = new ParmsUtils();
         parmsUtils.getPostBody(Api.ID, request.getId() + "");
+        parmsUtils.getPostBody(Api.NEW_ID, request.getNews_id() + "");
 
         if (!TextUtils.isEmpty(request.getDebug())) {
             parmsUtils.getPostBody(Api.DEBUG, request.getDebug());
@@ -402,8 +407,43 @@ public class SignJson {
      */
     public static String signAddGood(NewsAddGoodRequest request) {
         ParmsUtils parmsUtils = new ParmsUtils();
-        parmsUtils.getPostBody(Api.NEW_ID, request.getNew_id() + "");
+        parmsUtils.getPostBody(Api.NEW_ID, request.getNews_id() + "");
         parmsUtils.getPostBody(Api.DU_TYPE, request.getDu_type());
+
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        String json = gson.toJson(parmsUtils.params);
+        return json;
+    }
+
+    /**
+     * 评论列表
+     *
+     * @param request
+     * @return
+     */
+    public static String signCommontList(NewsCommontListRequest request) {
+        ParmsUtils parmsUtils = new ParmsUtils();
+        parmsUtils.getPostBody(Api.NEW_ID, request.getNews_id() + "");
+        parmsUtils.getPostBody(Api.PAGE, request.getPage() + "");
+        parmsUtils.getPostBody(Api.SIZE, request.getSize() + "");
+        parmsUtils.getPostBody(Api.ORDER, request.getOrder() + "");
+
+
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        String json = gson.toJson(parmsUtils.params);
+        return json;
+    }
+
+    /**
+     * 评论
+     *
+     * @param request
+     * @return
+     */
+    public static String signCommont(NewsCommontRequest request) {
+        ParmsUtils parmsUtils = new ParmsUtils();
+        parmsUtils.getPostBody(Api.NEW_ID, request.getNews_id() + "");
+        parmsUtils.getPostBody(Api.CONTENT, request.getContent() + "");
 
         Gson gson = new GsonBuilder().serializeNulls().create();
         String json = gson.toJson(parmsUtils.params);
@@ -433,6 +473,38 @@ public class SignJson {
         if (!TextUtils.isEmpty(request.getKey_code())) {
             parmsUtils.getPostBody(Api.key_code, request.getKey_code());
         }
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        String json = gson.toJson(parmsUtils.params);
+        return json;
+    }
+
+
+    public static String signShareVisit(SharedVistRequest request) {
+        ParmsUtils parmsUtils = new ParmsUtils();
+        if (!TextUtils.isEmpty(request.news_id)) {
+            parmsUtils.getPostBody(Api.NEW_ID, request.getNews_id());
+        }
+
+
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        String json = gson.toJson(parmsUtils.params);
+        return json;
+    }
+
+    /**
+     * 任务大厅
+     *
+     * @param request
+     * @return
+     */
+    public static String signTaskFinish(TaskFinishRequest request) {
+        ParmsUtils parmsUtils = new ParmsUtils();
+        parmsUtils.getPostBody(Api.ID, request.getId() + "");
+
+        if (!TextUtils.isEmpty(request.getDebug())) {
+            parmsUtils.getPostBody(Api.DEBUG, request.getDebug());
+        }
+
         Gson gson = new GsonBuilder().serializeNulls().create();
         String json = gson.toJson(parmsUtils.params);
         return json;

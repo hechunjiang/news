@@ -11,7 +11,7 @@ import com.linkedin.platform.listeners.ApiListener;
 import com.linkedin.platform.listeners.ApiResponse;
 import com.linkedin.platform.listeners.AuthListener;
 import com.linkedin.platform.utils.Scope;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.entiyt.LinkedInResponse;
 import com.news.mobile.utils.CommonUtils;
 import com.news.mobile.utils.ToastUtils;

@@ -8,7 +8,7 @@
     android:gravity="center"
     android:paddingLeft="14dp"
     android:paddingRight="14dp"
-    android:text="tag"
+    android:text="xxx"
     android:textColor="@color/tag_speed_color"
     android:textSize="14sp">
 

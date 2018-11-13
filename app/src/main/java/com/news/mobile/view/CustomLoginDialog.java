@@ -156,7 +156,7 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
                 dismiss();
                 break;
             case R.id.tt_login:
-                //mThirdLogin.TterLogin();
+//                mThirdLogin.TterLogin();
                 twitterLogin(false);
                 dismiss();
                 break;
@@ -472,7 +472,6 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
                             ACache.get(mContext).put(UserSpCache.KEY_PHONE, response.getData().getUser_info().getNickname(), ACache.STORAGE_TIME);
                             mUserSpCache.putString(UserSpCache.KEY_PASS, response.getData().getUser_info().getNickname());
                             mUserSpCache.putString(UserSpCache.KEY_IS_SECEND_OPEN_APP, "isSecend");
-                            ToastUtils.showShort(mContext, mUserSpCache.getStringData(UserSpCache.KEY_IS_USER_LOGIN) + "");
                             // mView.loginSucceed();
                             onThridSuccess(type, response.getData().getUser_info().getC_user_id() + "", isBind);
 
@@ -482,6 +481,8 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
 
                             EventBus.getDefault().post(Common.REFRESH_USERINFO);
                             mDialog.dismiss();
+
+                            LogUtil.showLog("成功");
                         }
                     }
 
@@ -490,7 +491,7 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
                         if (mThirdLogin != null) {
                             mThirdLogin.onCheckFail(baseResponse);
                         }
-                        ToastUtils.showShort(mContext, baseResponse.getMsg());
+                        ToastUtils.showLong(mContext, baseResponse.getMsg());
                         mDialog.dismiss();
                     }
                 });

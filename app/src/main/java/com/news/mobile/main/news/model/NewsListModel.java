@@ -6,6 +6,7 @@ import com.news.mobile.entiyt.NewsInfoResponse;
 import com.news.mobile.entiyt.request.NewsListRequest;
 import com.news.mobile.entiyt.request.PariseRequest;
 import com.news.mobile.entiyt.request.ShareNewsRequest;
+import com.news.mobile.entiyt.request.SharedVistRequest;
 import com.news.mobile.http.DataCallBack;
 import com.news.mobile.http.DataResponseCallback;
 import com.news.mobile.main.news.contract.NewsContract;
@@ -51,6 +52,8 @@ public class NewsListModel extends NewsContract.Model {
 
             @Override
             public void onSucceed(String json) {
+
+
                 LogUtil.showLog(json);
             }
 
@@ -79,6 +82,26 @@ public class NewsListModel extends NewsContract.Model {
             @Override
             public void onFail(BaseResponse baseResponse) {
                 callback.onFail(baseResponse);
+            }
+        });
+    }
+
+    @Override
+    public void requestSharedVisit(SharedVistRequest request, final DataCallBack callBack) {
+        getRetrofit().requestShareVisit(request, new DataCallBack() {
+            @Override
+            public void onComplete() {
+                callBack.onComplete();
+            }
+
+            @Override
+            public void onSucceed(String json) {
+                callBack.onSucceed(json);
+            }
+
+            @Override
+            public void onFail(BaseResponse baseResponse) {
+                callBack.onFail(baseResponse);
             }
         });
     }

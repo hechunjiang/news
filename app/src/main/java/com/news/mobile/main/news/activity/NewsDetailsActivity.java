@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;
 import com.news.mobile.base.Constant;
+import com.news.mobile.entiyt.NewsCommonListResponse;
 import com.news.mobile.entiyt.NewsInfoResponse;
 import com.news.mobile.main.news.adapter.NewsCommitAdapter;
 import com.news.mobile.utils.ToastUtils;
@@ -162,11 +163,7 @@ public class NewsDetailsActivity extends BaseActivity {
     }
 
     private void setCommit() {
-        List<String> list = new ArrayList<>();
-        for(int i = 0;i < 10;i++){
-            list.add("1");
-        }
-        rv_commit.setAdapter(new NewsCommitAdapter(list));
+        rv_commit.setAdapter(new NewsCommitAdapter(new ArrayList<NewsCommonListResponse.DataBean>()));
     }
 
     private void startGold(){

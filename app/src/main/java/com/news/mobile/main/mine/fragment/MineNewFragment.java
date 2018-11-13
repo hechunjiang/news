@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.allen.library.SuperTextView;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.news.mobile.JsShareType;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.MyApplication;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;
@@ -27,7 +27,6 @@ import com.news.mobile.main.mine.presenter.MineFPresenter;
 import com.news.mobile.main.web.activity.WebActivity;
 import com.news.mobile.tplatform.facebook.FaceBookShare;
 import com.news.mobile.utils.Common;
-import com.news.mobile.utils.ToastUtils;
 import com.news.mobile.utils.UserSpCache;
 import com.news.mobile.view.CustomLoginDialog;
 import com.news.mobile.view.MyRefreshLayout;
@@ -197,8 +196,10 @@ public class MineNewFragment extends BaseFragment<MineFPresenter, MineFModel> im
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshTips(String str) {
+
         if (Common.REFRESH_USERINFO.equals(str)) {
             mPresenter.getPersonMsg();
+
         }
     }
 

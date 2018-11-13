@@ -3,31 +3,42 @@ package com.news.mobile.main.task.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.news.mobile.BuildConfig;
 import com.news.mobile.MyApplication;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseFragment;
 import com.news.mobile.base.Constant;
 import com.news.mobile.entiyt.InfoResponse;
+import com.news.mobile.entiyt.TaskFinishResponse;
 import com.news.mobile.entiyt.TaskListNewResponse;
 import com.news.mobile.entiyt.TaskListResponse;
 import com.news.mobile.entiyt.event.RefreshTaskEvent;
 import com.news.mobile.entiyt.request.InfoRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
+import com.news.mobile.http.Api;
+import com.news.mobile.main.mine.activity.EarnActivity;
+import com.news.mobile.main.mine.activity.FeedbackActivity;
+import com.news.mobile.main.mine.activity.PersonActivity;
+import com.news.mobile.main.mine.activity.SettingActivity;
 import com.news.mobile.main.task.TaskTest;
 import com.news.mobile.main.task.adapter.TaskAdapter;
 import com.news.mobile.main.task.adapter.TimeLineAdapter;
 import com.news.mobile.main.task.contract.TaskContract;
 import com.news.mobile.main.task.model.TaskModel;
 import com.news.mobile.main.task.presenter.TaskPresenter;
+import com.news.mobile.main.web.activity.WebActivity;
 import com.news.mobile.utils.Common;
 import com.news.mobile.utils.LogUtil;
 import com.news.mobile.utils.ToastUtils;
@@ -38,6 +49,8 @@ import com.news.mobile.view.MyRefreshLayout;
 import com.news.mobile.view.OpenTheTreasureBoxDialog;
 import com.news.mobile.view.VerticalTextview;
 import com.news.mobile.view.dialog.UploadProgressDialog;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -127,7 +140,40 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
 
     @Override
     public void initEvents() {
+        refresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                mPresenter.getTaskListNew(new TaskListRequest());
+            }
+        });
 
+        adapter.setOnTaskClickListener(new TaskAdapter.OnTaskClickListener() {
+            @Override
+            public void onClick(TaskTest item) {
+                if (item.t.getIs_award() == 1) {  //可以领取金币
+                    mDialog.show();
+                    TaskFinishRequest request = new TaskFinishRequest();
+                    request.setId(item.t.getId() + "");
+                    request.setDebug(BuildConfig.DEBUG ? "ok" : null);
+                    mPresenter.taskFinish(request);
+                } else if (item.t.getIs_award() == 0) { //金币不可领取才执行任务跳转
+
+                    String button_url = item.t.getButton_url();
+                    LogUtil.showLog("button_url=====" + button_url);
+                    if (button_url.startsWith("app:")) {
+                        goTask(button_url);
+                    } else if (button_url.startsWith("h5:")) {
+                        String[] split = button_url.split(":");
+                        WebActivity.toThis(mContext, Api.BASE_H5_URL + split[1]);
+                    } else if (button_url.startsWith("http")) {
+                        Intent intent = new Intent();
+                        intent.setData(Uri.parse(button_url));
+                        intent.setAction(Intent.ACTION_VIEW);
+                        mContext.startActivity(intent);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -258,6 +304,14 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
             mOpenTheTreasureBoxDialog.showDialog(count);
             mPresenter.getGoldTime();
         }
+    }
+
+    @Override
+    public void taskFinish(TaskFinishResponse response) {
+        mDialog.dismiss();
+        refresh.autoRefresh();
+        //todo:加金币弹窗
+        ToastUtils.showGoldCoinToast(mContext, response.getMsg(),"+"+response.getData().getGold());
     }
 
 
@@ -395,6 +449,80 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
             return i + "";
         } else {
             return "0" + i;
+        }
+    }
+
+    private void goTask(String taskUrl) {
+
+        if (TextUtils.isEmpty(taskUrl)) {
+            return;
+        }
+
+        taskUrl = taskUrl.trim();
+
+        String[] split = taskUrl.split(":");
+
+        if (split.length < 2 || TextUtils.isEmpty(split[1])) {
+            return;
+        }
+
+        if ("indexHorizontal".equals(split[1])) {  //首页横屏
+
+        } else if ("indexVertical".equals(split[1])) { //首页竖屏
+
+        } else if ("indexNews".equals(split[1])) {  //首页新闻
+
+        } else if ("login".equals(split[1])) {  //登陆
+            if (isLogin()) {
+
+            }
+        } else if ("register".equals(split[1])) { //注册
+
+        } else if ("bindEmail".equals(split[1])) { //绑定邮箱页面
+            //startActivity(BindEmailActivity.class);
+        } else if ("bindFacebook".equals(split[1])) { //绑定facebook操作   （直接调接口）
+            //startActivity(BindEmailActivity.class);
+
+            loginDialog.faceBookLogin(true);
+
+        } else if ("bindTwitter".equals(split[1])) { // 绑定Twitter操作   （直接调接口）
+            //startActivity(BindEmailActivity.class);
+
+            loginDialog.twitterLogin(true);
+        } else if ("bindLinkedin".equals(split[1])) { //绑定linkedin操作   （直接调接口）
+            //startActivity(BindEmailActivity.class);
+        } else if ("bindIns".equals(split[1])) { //绑定Gmail操作   （直接调接口）
+            //startActivity(BindEmailActivity.class);
+
+        } else if ("bindGmail".equals(split[1])) {
+
+            loginDialog.googleLogin(true);
+        } else if ("followVideo".equals(split[1])) { // 关注列表页面
+
+        } else if ("shot".equals(split[1])) { //拍摄页面
+        } else if ("workCenter".equals(split[1])) { //作品中心
+
+        } else if ("fans".equals(split[1])) { //粉丝列表
+
+        } else if ("follows".equals(split[1])) { //关注列表
+
+        } else if ("likeVideo".equals(split[1])) { //喜欢视频列表
+
+
+        } else if ("center".equals(split[1])) { //  个人中心
+            //EventBus.getDefault().post(new MessageEvent(Common.SELECT_FRAGMENT, 3));
+        } else if ("update".equals(split[1])) { //修改信息界面
+            if (isLogin()) {
+                startActivity(PersonActivity.class);
+            }
+        } else if ("opinion".equals(split[1])) { //意见反馈
+            startActivity(FeedbackActivity.class);
+        } else if ("frends".equals(split[1])) { // 收徒界面
+            startActivity(EarnActivity.class);
+        } else if ("setting".equals(split[1])) { // 退出登陆界面
+            startActivity(SettingActivity.class);
+        } else if ("teachVideo".equals(split[1])) {  //新手教学视频
+
         }
     }
 }

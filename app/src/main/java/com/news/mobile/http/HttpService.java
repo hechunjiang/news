@@ -7,6 +7,8 @@ import com.news.mobile.entiyt.request.GetboxtimeRequst;
 import com.news.mobile.entiyt.request.InfoRequest;
 import com.news.mobile.entiyt.request.LoginRequest;
 import com.news.mobile.entiyt.request.NewsAddGoodRequest;
+import com.news.mobile.entiyt.request.NewsCommontListRequest;
+import com.news.mobile.entiyt.request.NewsCommontRequest;
 import com.news.mobile.entiyt.request.NewsDetailRequest;
 import com.news.mobile.entiyt.request.NewsGoldRequest;
 import com.news.mobile.entiyt.request.NewsListRequest;
@@ -17,6 +19,8 @@ import com.news.mobile.entiyt.request.ResetPassRequst;
 import com.news.mobile.entiyt.request.ShareNewsRequest;
 import com.news.mobile.entiyt.request.ShareVisitRequest;
 import com.news.mobile.entiyt.request.SharedRequest;
+import com.news.mobile.entiyt.request.SharedVistRequest;
+import com.news.mobile.entiyt.request.TaskFinishRequest;
 import com.news.mobile.entiyt.request.TaskListRequest;
 import com.news.mobile.entiyt.request.TaskRequest;
 import com.news.mobile.entiyt.request.TaskRequestAdVideo;
@@ -105,6 +109,8 @@ public interface HttpService {
     @POST(Api.NEWS_SHARCONTENT)
     Observable<String> requestSharedConttent(@HeaderMap HashMap<String, String> hashMap, @Body ShareNewsRequest request);
 
+    @POST(Api.SHARED_VISITED)
+    Observable<String> requestSharedVisit(@HeaderMap HashMap<String, String> hashMap, @Body SharedVistRequest request);
 
     /**
      * 获取用户信息
@@ -203,6 +209,16 @@ public interface HttpService {
     @POST(Api.TASK_LIST_NEW)
     Observable<String> getTaskListNew(@HeaderMap HashMap<String, String> map, @Body TaskListRequest request);
 
+    /**
+     * 任务列表
+     *
+     * @param map
+     * @param request
+     * @return
+     */
+    @POST(Api.TASK_FINISH)
+    Observable<String> taskFinish(@HeaderMap HashMap<String, String> map, @Body TaskFinishRequest request);
+
 
     /**
      * 收益列表
@@ -250,4 +266,10 @@ public interface HttpService {
 
     @POST(Api.NEWS_ADD_GOOD)
     Observable<String> addGood(@HeaderMap HashMap<String, String> map, @Body NewsAddGoodRequest request);
+
+    @POST(Api.NEWS_COMMONT_LIST)
+    Observable<String> commontList(@HeaderMap HashMap<String, String> map, @Body NewsCommontListRequest request);
+
+    @POST(Api.NEWS_COMMONT)
+    Observable<String> commont(@HeaderMap HashMap<String, String> map, @Body NewsCommontRequest request);
 }

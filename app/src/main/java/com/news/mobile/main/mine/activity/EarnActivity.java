@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.news.mobile.JsShareType;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.news.mobile.entiyt.JsShareType;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;
 import com.news.mobile.entiyt.ApprenticePageDataResponse;
 import com.news.mobile.http.Api;
-import com.news.mobile.main.home.activity.MainActivity;
 import com.news.mobile.main.mine.contract.EarnActivityContract;
 import com.news.mobile.main.mine.model.EarnModel;
 import com.news.mobile.main.mine.presenter.EarnAPresenter;
@@ -22,6 +23,8 @@ import com.news.mobile.tplatform.facebook.FaceBookShare;
 import com.news.mobile.tplatform.linkedin.LinkedInPlatform;
 import com.news.mobile.tplatform.twitter.TwitterLogin;
 import com.news.mobile.utils.Common;
+import com.news.mobile.utils.CommonUtils;
+import com.news.mobile.utils.LogUtil;
 import com.news.mobile.utils.StatusBarUtils;
 import com.news.mobile.utils.ToastUtils;
 import com.news.mobile.view.CustomShareDialog;
@@ -66,18 +69,14 @@ public class EarnActivity extends BaseActivity<EarnAPresenter, EarnModel> implem
         mCoinsFromFriends = findViewById(R.id.tv_earn_coins_from);
         mFriends = findViewById(R.id.tv_earn_friends);
         m2ndFriends = findViewById(R.id.tv_earn_2nd);
-//        tv_shifu = findViewById(R.id.earn_text_4);
-//        iv_shifu = findViewById(R.id.iv_earn_my_inviter);
         toplayouts = findViewById(R.id.view3);
         tv_earn = findViewById(R.id.tv_earn_title);
-        // tv_up_load = findViewById(R.id.tv_up_load);
         tv_earn_invite = findViewById(R.id.tv_invition_start);
         tv_earn_basic = findViewById(R.id.tv_earn_basic);
         tv_earn_permanent = findViewById(R.id.tv_earn_permanent);
         v_earn_friends = findViewById(R.id.v_earn_friends);
         v_earn_2nd = findViewById(R.id.v_earn_2nd);
         tv_invition_copy = findViewById(R.id.tv_invition_copy);
-//        close_ad = findViewById(R.id.close_ad);
 
         if (this != null)
             personSr.setColorSchemeColors(this.
@@ -173,12 +172,29 @@ public class EarnActivity extends BaseActivity<EarnAPresenter, EarnModel> implem
     @Override
     public void initObject() {
         setMVP();
-
+        mPresenter.getDatas();
     }
 
     @Override
-    public void setViewData(ApprenticePageDataResponse apprenticePageDataResponse) {
+    public void setViewData(ApprenticePageDataResponse data) {
 
+        if (personSr != null) {
+            if (personSr.isRefreshing()) personSr.setRefreshing(false);
+        }
+        if (data != null) {
+//            mInCode.setText(getString(R.string.earn_my_in_code,
+//                    data.getData().getInvitation_code()));
+            mInCode.setText(
+                    data.getData().getInvitation_code());
+            mCoinsFromFriends.setText(data.getData().getGold_tribute_total() + "");
+            mFriends.setText(data.getData().getApprentice_total() + "");
+            mPresenter.vw_toplayout(data.getData().getApprentice_total());
+            m2ndFriends.setText(data.getData().getDisciple_num() + "");
+//            if (!data.getData().getIs_shifu()) {
+//                tv_shifu.setVisibility(View.GONE);
+//                iv_shifu.setVisibility(View.GONE);
+//            }
+        }
     }
 
     @Override
@@ -187,7 +203,73 @@ public class EarnActivity extends BaseActivity<EarnAPresenter, EarnModel> implem
     }
 
     @Override
-    public void toShare(int type, JsShareType jsShareType) {
+    public void toShare(int type, final JsShareType jsShareType) {
+
+        if (type == Common.SHARE_TYPE_TWITTER) {
+            if (mTwitterLogin == null) mTwitterLogin = new TwitterLogin();
+            mTwitterLogin.setTwitterShareLisenter(new TwitterLogin.TwitterShareLisenter() {
+                @Override
+                public void getShareOk(String response) {
+                    LogUtil.showLog("msg---分享成功:");
+                    //计数
+                    mPresenter.shareVisit(CommonUtils.getShareSuccesResponse(), jsShareType.getActivity_type(), jsShareType.getType());
+                }
+
+                @Override
+                public void getShareFail(String response) {
+                    LogUtil.showLog("msg---分享失败:");
+                }
+
+                @Override
+                public void getShareCancel(String response) {
+                    LogUtil.showLog("msg---分享取消:");
+                }
+            });
+            mTwitterLogin.twitterShare(EarnActivity.this, jsShareType, Common.TWITTER_SHARE_IAMGE);
+        } else if (type == Common.SHARE_TYPE_FACEBOOK) {
+            if (mFaceBookShare == null)
+                mFaceBookShare = new FaceBookShare(EarnActivity.this, new FacebookCallback() {
+                    @Override
+                    public void onSuccess(Object o) {
+                        LogUtil.showLog("msg---分享成功:");
+                        ToastUtils.showShort(mContext, getString(R.string.sharedSuccess));
+                        //计数
+                        mPresenter.shareVisit(CommonUtils.getShareSuccesResponse(), jsShareType.getActivity_type(), jsShareType.getType());
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        LogUtil.showLog("msg---取消分享:");
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        ToastUtils.showShort(mContext, getString(R.string.sharedFialed));
+
+
+                    }
+                });
+            mFaceBookShare.share(jsShareType);
+        } else if (type == Common.SHARE_TYPE_LINKEDIN) {
+            if (mLinkedInPlatform == null)
+                mLinkedInPlatform = new LinkedInPlatform(EarnActivity.this);
+            mLinkedInPlatform.linkedInShareLisenter(new LinkedInPlatform.linkedInShareLisenter() {
+                @Override
+                public void getShareOk(String response) {
+                    LogUtil.showLog("msg---分享成功:");
+                    ToastUtils.showShort(mContext, getString(R.string.sharedSuccess));
+                    //计数
+                    mPresenter.shareVisit(CommonUtils.getShareSuccesResponse(), jsShareType.getActivity_type(), jsShareType.getType());
+                }
+
+                @Override
+                public void getShareFail(String response) {
+                    LogUtil.showLog("msg---分享失败:");
+                    ToastUtils.showShort(mContext, getString(R.string.sharedFialed));
+                }
+            });
+            mLinkedInPlatform.linkedInShare(jsShareType);
+        }
 
     }
 
@@ -203,6 +285,7 @@ public class EarnActivity extends BaseActivity<EarnAPresenter, EarnModel> implem
 
     @Override
     public void showErrorTip(int code, String msg) {
-
+        personSr.setRefreshing(false);
+        ToastUtils.showShort(mContext, msg);
     }
 }

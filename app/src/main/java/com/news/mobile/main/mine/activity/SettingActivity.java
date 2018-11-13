@@ -5,6 +5,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.news.mobile.BuildConfig;
+import com.news.mobile.MyApplication;
 import com.news.mobile.R;
 import com.news.mobile.base.BaseActivity;
 import com.news.mobile.entiyt.event.LogoutEvent;
@@ -26,6 +27,9 @@ public class SettingActivity extends BaseActivity<AdvertPresenter, AdvertModel> 
     private TextView tvClearCache, tvUpData, tvLogOut, tv_version;
     private RelativeLayout relativeLayout, checkSetting;
     private UploadProgressDialog mDialog;
+    private UserSpCache mUserSpCache = UserSpCache.getInstance(MyApplication.getAppContext());
+    private boolean islogin = false;
+
 
     @Override
     public int getLayoutId() {
@@ -44,6 +48,7 @@ public class SettingActivity extends BaseActivity<AdvertPresenter, AdvertModel> 
         mDialog = UploadProgressDialog.initGrayDialog(this);
         mDialog.setMessage("");
         tv_version.setText("V" + BuildConfig.VERSION_NAME);
+        islogin = mUserSpCache.getBoolean("Constant.KEY_IS_USER_LOGIN");
     }
 
     @Override
@@ -71,6 +76,7 @@ public class SettingActivity extends BaseActivity<AdvertPresenter, AdvertModel> 
     }
 
     public void logout() {
+
         int totalCount = UserSpCache.getInstance(mContext).getInt(UserSpCache.NEEDCOUNT_LOGIN);
         long signTime = UserSpCache.getInstance(mContext).getLong(UserSpCache.SIGN_SERVICE_TIME);
         long localTime = UserSpCache.getInstance(mContext).getLong(UserSpCache.SIGN_LOCAL_TIME);
@@ -85,11 +91,16 @@ public class SettingActivity extends BaseActivity<AdvertPresenter, AdvertModel> 
         UserSpCache.getInstance(mContext).putInt(UserSpCache.OPEN_GOLD_COUNT, openGoldCount);
         UserSpCache.getInstance(mContext).putInt(UserSpCache.OPEN_RED_COUNT, openRedCount);
         mPresenter.checkIstemp();
+
     }
 
     @Override
     public void initObject() {
         setMVP();
+
+        if (!islogin) {
+            tvLogOut.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

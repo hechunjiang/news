@@ -73,9 +73,9 @@
 
 
         <TextView
+            android:id="@+id/tv_review_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reviews(251)"
             android:textSize="17sp"
             android:layout_weight="1"
             android:textColor="@color/c333"
@@ -85,7 +85,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="14dp"
-            android:text="All Reviews"
             android:textColor="@color/c999999"
             android:textSize="13sp" />
 
