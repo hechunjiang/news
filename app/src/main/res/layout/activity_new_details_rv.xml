@@ -45,13 +45,15 @@
                 android:id="@+id/iv_whats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="14dp"
                 android:src="@mipmap/wates_commont" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/more_commont" />
+                android:src="@mipmap/more_commont"
+                android:layout_marginLeft="14dp"
+                android:visibility="gone"/>
+
 
         </LinearLayout>
     </RelativeLayout>
@@ -70,7 +72,7 @@
         android:layout_below="@id/view"
         android:orientation="vertical">
 
-        <com.news.mobile.view.MyRefreshLayout
+        <com.news.mobilephone.view.MyRefreshLayout
             android:id="@+id/web_sr"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -78,14 +80,14 @@
             android:descendantFocusability="afterDescendants"
             android:visibility="visible">
 
-            <com.news.mobile.view.MyRecyclerView
+            <com.news.mobilephone.view.MyRecyclerView
                 android:id="@+id/rv_commit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </com.news.mobile.view.MyRecyclerView>
+            </com.news.mobilephone.view.MyRecyclerView>
 
-        </com.news.mobile.view.MyRefreshLayout>
+        </com.news.mobilephone.view.MyRefreshLayout>
 
         <LinearLayout
             android:id="@+id/ll_bottom"
@@ -235,21 +237,21 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/gold_progress" />
 
-        <com.news.mobile.view.MyNewsProgress
+        <com.news.mobilephone.view.MyNewsProgress
             android:id="@+id/video_progress"
             android:layout_width="47dp"
             android:layout_height="47dp" />
     </RelativeLayout>
 
 
-    <com.news.mobile.view.EmptyLayout
+    <com.news.mobilephone.view.EmptyLayout
         android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/web_title"
         android:visibility="gone">
 
-    </com.news.mobile.view.EmptyLayout>
+    </com.news.mobilephone.view.EmptyLayout>
 
     <ProgressBar
         android:id="@+id/web_progress"

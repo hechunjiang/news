@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.news.mobile">
+    package="com.news.mobilephone">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -27,7 +26,7 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
-        android:name=".MyApplication"
+        android:name="com.news.mobilephone.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/news_logo"
         android:label="@string/app_name"
@@ -35,32 +34,35 @@
         android:roundIcon="@mipmap/news_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.advert.activity.AdVertyActivity">
+        <activity android:name="com.news.mobilephone.main.advert.activity.AdVertyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.home.activity.MainActivity" />
-        <activity android:name=".main.news.activity.NewsDetailsActivity" />
-        <activity android:name=".main.news.activity.NewsDetailsRvActivity" />
-        <activity android:name=".main.mine.activity.PrivacyActivity" />
-        <activity android:name=".main.mine.activity.FindPassActivity" />
+        <activity android:name="com.news.mobilephone.main.home.activity.MainActivity" />
+        <activity android:name="com.news.mobilephone.main.news.activity.NewsDetailsActivity" />
+        <activity android:name="com.news.mobilephone.main.news.activity.NewsDetailsRvActivity">
+        </activity>
+        <activity android:name="com.news.mobilephone.main.mine.activity.PrivacyActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.FindPassActivity" />
+
+        <activity android:name=".main.bind.BindEmailActivity"/>
 
         <!-- facebook登录 -->
 
-        <activity android:name=".main.mine.activity.EarnActivity" />
-        <activity android:name=".main.web.activity.WebActivity" />
-        <activity android:name=".main.web.activity.MyWebActivity" />
-        <activity android:name=".main.mine.activity.MessageActivity" />
-        <activity android:name=".main.mine.activity.FeedbackActivity" />
-        <activity android:name=".main.mine.activity.SettingActivity" />
-        <activity android:name=".main.mine.activity.PersonActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.EarnActivity" />
+        <activity android:name="com.news.mobilephone.main.web.activity.WebActivity" />
+        <activity android:name="com.news.mobilephone.main.web.activity.MyWebActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.MessageActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.FeedbackActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.SettingActivity" />
+        <activity android:name="com.news.mobilephone.main.mine.activity.PersonActivity" />
 
         <!-- twitter分享 -->
         <receiver
-            android:name=".tplatform.twitter.MyResultReceiver"
+            android:name="com.news.mobilephone.tplatform.twitter.MyResultReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_SUCCESS" />
@@ -71,7 +73,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.news.mobile.fileProvider"
+            android:authorities="com.news.mobilephone.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -92,6 +94,17 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+
+        <!-- 热修复配置 -->
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="25262380" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="edd3c47e6c3a29e27bfe6384864c8e48" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCZtOzeUVQ9s8DnFN8v/blFRMhTJ9JKNeZnVoM8t+fjWxay3C5pbMAVE+L53ogxwkeQ+u2vSBtyk446rcwCgrfcRRCffa7y5xDpGJgrCnJaTZwOCNWmjqBkw44R5wweb1g/xGdBZEg4KoWlLk7/UdyH3XjgTODH6xJyd1s/TOAjrB7j9YTBPWfGWvrP7zBI0PnG4WLfKY+q6ya0ET1dWj8LLcAxq8GpxRLU5IMnDEUZ35U71uTF8xoZLFHE9VKNEeYZcuTU1rUReQCqGYzOCfiGXvvNbTw3OLQx8nRoJS+fkms5qYe02zTot7cjAl66z7c9dSX1d8Gw6S2HrGrPuHlJAgMBAAECggEADpLvGq1PdYJDuiVqfBxsorrA29GcyNiPfiDf1LQDUrViU5c491oOZHE8RkDpXP501rRUMRh/Mb/37mxoOZy3XjVWPCkom3N5UQC5/OrCqPlO4K3JxD8lyigYom3r4j7geTtgJv0hM+IkReM8Lk1OwbsoKOxhK9OILj5O8pORdRBILAAnN6wUwxXSOg/ckR+iUv89lSOsmt1zaDRqqzb8hKLEFQs0/PLpx7YjdWwognK28bMX+GLRFKp4Q1Gv1yq6SwmBx6J0nDzBwVSxf7RPIi/IVvcNnbDyU4jEy0eK6JOLBdTle4m0i9vR/v5axr+6gVw5eRciltiPJtkEalVO4QKBgQD8sRsVRT+yQN3Q/0DaLsXkhJMf8x2cZdbHvYXOpnaVjLO/9w68EtK6gG2NwGqv0xqWxEEMQv/baRggtl+kUjmLPRbbjDzahQr2wxDI//m9WbKekKXqp3Ank+gDYFMVFTem1MvEDFA8OVFEkPK59d3p68pAkwCFpYizZu+MUNA+NQKBgQCbuBJp44HvO2RkEqzo42hLSKsDi4LGGGteUW7jUWSz+UYlJkqLJRTWnXg6jE0hpt+h68KZgEf37qKH/fFrnq8Y9G1OM2p3e1FdnJ0Ke609oDw0F3qV1gr1Z0khWl3BOEVccBNEQijrG6bNv3IycUsQ64zz1Pgc5mqxr694GyOBRQKBgDWUN/HipQbeyimudcnNcRhrI+b6XaTz0v63KNAQa8R5+QMTF4S5WQVChfgwfG6bjF+7bS90ZVvYhM0q3kyxQpJLebVDnwOWgiSgZ8a2v/VuN3l3ojaHGjjKG7/bhMJLpWkyZaJEGh8q6Bhpw426nDslS9U1Vj8AQmQHx3MxD3ahAoGABP8wIBO73KhkPU3YHJUHiLrpOfDlHmQ0Nc+ZJlQ7TgcmuBR1eeeTtptQ+1f7NaQ8Mt703KYgKRWQQ5rjf1eVONDHHSZLOVBMuRtIcsirM3oL1IQYW+yFZ4CL+TUEIyoiF6hFBgC1fW3iuWF2UaYPCZj1afGgkJTYQaFomQsN5Z0CgYBIBRcVeUy5gOGqDca6AMhHCP++sNN4t51Uwd/wbg5pOHSkamOoxZE1NVLlqlXnQGqnILofBm5zJDvG+/hDFvmIQuQAiClrDxaf2WJBEO0Cva+GosXTINzKwd8JhhOKSEHGL6v2hxvY0DznTjU/U+05hMblgYpwQg2VdtfjNU8FoA==" />
     </application>
 
 </manifest>

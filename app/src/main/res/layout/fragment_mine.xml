@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.news.mobile.main.mine.fragment.MineFragment">
+    tools:context="com.news.mobilephone.main.mine.fragment.MineFragment">
 
-    <com.news.mobile.view.MyRefreshLayout
+    <com.news.mobilephone.view.MyRefreshLayout
         android:id="@+id/person_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -580,6 +580,6 @@
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
-    </com.news.mobile.view.MyRefreshLayout>
+    </com.news.mobilephone.view.MyRefreshLayout>
 
 </FrameLayout>

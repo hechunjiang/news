@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.news.mobile.view.MyWebView
+    <com.news.mobilephone.view.MyWebView
         android:id="@+id/myweb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.news.mobile.view.MyWebView>
+        android:layout_height="match_parent"></com.news.mobilephone.view.MyWebView>
 
 </LinearLayout>

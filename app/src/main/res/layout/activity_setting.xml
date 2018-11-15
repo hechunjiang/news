@@ -135,7 +135,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.news.mobile.view.GifView
+        <com.news.mobilephone.view.GifView
             android:id="@+id/gif_web_loading"
             android:layout_width="88dp"
             android:layout_height="114dp"

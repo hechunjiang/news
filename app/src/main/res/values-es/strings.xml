@@ -124,6 +124,19 @@
     <string name="earn_permanent">perdurable</string>
     <string name="my_friends">My Friends</string>
     <string name="my_we_code">My WE Code</string>
+    <string name="nomessage">Нет новостей</string>
+
+    <string name="years">hace años</string>
+    <string name="year">hace año</string>
+    <string name="month">hace mes</string>
+    <string name="months">hace meses</string>
+    <string name="days">hace días</string>
+    <string name="day">hace día</string>
+    <string name="hours">hace horas</string>
+    <string name="hour">hace hora</string>
+    <string name="minits">hace minutos</string>
+    <string name="minute">hace minuto</string>
+    <string name="justnow">ahora</string>
 
 
     ////////////

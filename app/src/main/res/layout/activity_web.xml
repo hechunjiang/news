@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".main.web.activity.WebActivity">
 
-    <com.news.mobile.view.TitleBar
+    <com.news.mobilephone.view.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -63,7 +63,7 @@
         </FrameLayout>
     </RelativeLayout>
 
-    <com.news.mobile.view.EmptyLayout
+    <com.news.mobilephone.view.EmptyLayout
         android:id="@+id/mEmptyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

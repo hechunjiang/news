@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/invition_num"
     android:orientation="vertical"
-    tools:context="com.news.mobile.main.mine.activity.EarnActivity">
+    tools:context="com.news.mobilephone.main.mine.activity.EarnActivity">
 
     <RelativeLayout
         android:id="@+id/tvtop"

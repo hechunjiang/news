@@ -46,10 +46,12 @@
 
     </LinearLayout>
 
-    <com.news.mobile.view.MyWebView
+    <com.news.mobilephone.view.MyWebView
         android:id="@+id/wv_news_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         android:layout_marginTop="14dp"/>
 
     <View

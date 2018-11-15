@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.news.mobile.main.advert.activity.AdVertyActivity">
+    tools:context="com.news.mobilephone.main.advert.activity.AdVertyActivity">
 
     <ImageView
         android:id="@+id/gif_logo"
@@ -20,8 +20,9 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/ad_time_bg"
         android:gravity="center"
+        tools:text="5秒"
         android:textColor="@color/colorWhite"
         android:textSize="13sp"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
 </RelativeLayout>

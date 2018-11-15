@@ -123,5 +123,20 @@
     <string name="earn_permanent">ถาวร</string>
     <string name="my_friends">My Friends</string>
     <string name="my_we_code">My WE Code</string>
+    <string name="nomessage">ไม่มีข้อความ</string>
+
+
+    <string name="years">ปีก่อน</string>
+    <string name="year">ปี่ที่แล้ว</string>
+    <string name="month">เดือนที่แล้ว</string>
+    <string name="months">เดือนที่แล้ว</string>
+    <string name="days">วันก่อน</string>
+    <string name="day">เมื่อวาน</string>
+    <string name="hours">ชั่วโมงก่อน</string>
+    <string name="hour">ชั่วโมงก่อน</string>
+    <string name="minits">นาทีก่อน</string>
+    <string name="minute">หนึ่งนาทีก่อน</string>
+    <string name="justnow">เมื่อกี้</string>
+
 
 </resources>

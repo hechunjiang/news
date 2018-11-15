@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.news.mobile.main.news.activity.NewsDetailsActivity">
+    tools:context="com.news.mobilephone.main.news.activity.NewsDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/web_title"
@@ -52,7 +52,7 @@
         android:layout_below="@id/web_title"
         android:visibility="visible">
 
-        <com.news.mobile.view.MyScrollView
+        <com.news.mobilephone.view.MyScrollView
             android:id="@+id/sv_news_details"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -101,7 +101,7 @@
 
                 </LinearLayout>
 
-                <com.news.mobile.view.MyWebView
+                <com.news.mobilephone.view.MyWebView
                     android:id="@+id/wv_news_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
-        </com.news.mobile.view.MyScrollView>
+        </com.news.mobilephone.view.MyScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <FrameLayout
@@ -209,7 +209,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/video_collin_bg" />
 
-        <com.news.mobile.view.MyNewsProgress
+        <com.news.mobilephone.view.MyNewsProgress
             android:id="@+id/video_progress"
             android:layout_width="47dp"
             android:layout_height="47dp" />
@@ -223,7 +223,7 @@
         android:background="@color/colorWhite"
         android:visibility="gone">
 
-        <com.news.mobile.view.GifView
+        <com.news.mobilephone.view.GifView
             android:id="@+id/gif_web_loading"
             android:layout_width="88dp"
             android:layout_height="114dp"

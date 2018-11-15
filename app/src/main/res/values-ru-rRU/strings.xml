@@ -121,5 +121,8 @@
     <string name="earn_permanent">Перманентный</string>
     <string name="my_friends">My Friends</string>
     <string name="my_we_code">My WE Code</string>
+    <string name="nomessage">No hay noticias</string>
+
+
 
 </resources>

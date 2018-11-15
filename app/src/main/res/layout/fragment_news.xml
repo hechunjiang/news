@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.news.mobile.main.news.fragment.NewsFragment">
+    tools:context="com.news.mobilephone.main.news.fragment.NewsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
     </RelativeLayout>
 
 
-    <com.news.mobile.view.MyRefreshLayout
+    <com.news.mobilephone.view.MyRefreshLayout
         android:id="@+id/refresh_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -39,9 +39,9 @@
             android:id="@+id/rv_news"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.news.mobile.view.MyRefreshLayout>
+    </com.news.mobilephone.view.MyRefreshLayout>
 
-    <com.news.mobile.view.EmptyLayout
+    <com.news.mobilephone.view.EmptyLayout
         android:id="@+id/mEmptyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

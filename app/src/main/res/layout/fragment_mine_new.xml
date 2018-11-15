@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.news.mobile.view.MyRefreshLayout
+    <com.news.mobilephone.view.MyRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,7 +58,7 @@
 
                                 <com.allen.library.SuperTextView
                                     android:id="@+id/sv_left"
-                                    android:layout_width="70dp"
+                                    android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_gravity="center"
                                     fresco:sCenterBottomTextColor="@color/c999999"
@@ -88,7 +88,7 @@
 
                                 <com.allen.library.SuperTextView
                                     android:id="@+id/sv_right"
-                                    android:layout_width="70dp"
+                                    android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:gravity="center"
                                     fresco:sCenterBottomTextColor="@color/c999999"
@@ -146,8 +146,8 @@
                         android:id="@+id/tv_invit"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginRight="45dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
                         android:drawablePadding="-20dp"
                         android:drawableTop="@mipmap/invit"
                         android:gravity="center"
@@ -228,6 +228,6 @@
                     android:textSize="17sp" />
             </LinearLayout>
         </ScrollView>
-    </com.news.mobile.view.MyRefreshLayout>
+    </com.news.mobilephone.view.MyRefreshLayout>
 
 </LinearLayout>
