@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.google.gson.Gson;
+import com.news.mobilephone.MyApplication;
 import com.news.mobilephone.R;
 import com.news.mobilephone.base.BaseActivity;
 import com.news.mobilephone.base.Constant;
@@ -65,6 +66,7 @@ import com.news.mobilephone.utils.LogUtil;
 import com.news.mobilephone.utils.StatusBarUtils;
 import com.news.mobilephone.utils.ToastUtils;
 import com.news.mobilephone.utils.UserSpCache;
+import com.news.mobilephone.view.CustomLoginDialog;
 import com.news.mobilephone.view.EdittextUtlis;
 import com.news.mobilephone.view.EmptyLayout;
 import com.news.mobilephone.view.GifView;
@@ -131,6 +133,7 @@ public class NewsDetailsRvActivity
 
     private boolean hasAddGold = false;
     private NewsDb newsDb;
+    private CustomLoginDialog loginDialog;
 
     private int page = 1;
     private int size = 20;
@@ -140,6 +143,8 @@ public class NewsDetailsRvActivity
     TwitterLogin mTwitterLogin;
     FaceBookShare mFaceBookShare;
     private WhatsAppShare whatsAppShare;
+    private UserSpCache mUserSpCache = UserSpCache.getInstance(MyApplication.getAppContext());
+    private boolean isLogin = false;
 
     public static void toThis(Context mContext, NewsInfoResponse.DataBeanX.DataBean response) {
         Intent intent = new Intent(mContext, NewsDetailsRvActivity.class);
@@ -159,6 +164,8 @@ public class NewsDetailsRvActivity
 
     @Override
     public void initView() {
+        isLogin = mUserSpCache.getBoolean(Constant.KEY_IS_USER_LOGIN);
+        loginDialog = new CustomLoginDialog(NewsDetailsRvActivity.this, NewsDetailsRvActivity.this);
         //dataBean = getIntent().getParcelableExtra(Constant.NEWSINFO);
         newsId = getIntent().getStringExtra(Constant.NEWS_ID);
         du_type = getIntent().getStringExtra(Constant.DU_TYPE);
@@ -365,7 +372,7 @@ public class NewsDetailsRvActivity
                 //评论上拉加载
                 NewsCommontListRequest request = new NewsCommontListRequest();
                 request.setNews_id(newsId);
-                request.setPage((page+1) + "");
+                request.setPage((page + 1) + "");
                 request.setSize(size + "");
                 request.setOrder(order);
                 mPresenter.commontList(request);
@@ -403,21 +410,26 @@ public class NewsDetailsRvActivity
                     return;
                 }
 
-                NewsAddGoodRequest request = new NewsAddGoodRequest();
-                request.setNews_id(newsId);
-                request.setDu_type(data.getDu_type() + "");
-                if (iv_good.isChecked()) {
-                    final GoodView goodView = new GoodView(mContext);
-                    goodView.setImage(R.mipmap.good);
-                    goodView.show(iv_good);
+                if (isLogin) {
+                    NewsAddGoodRequest request = new NewsAddGoodRequest();
+                    request.setNews_id(newsId);
+                    request.setDu_type(data.getDu_type() + "");
+                    if (iv_good.isChecked()) {
+                        final GoodView goodView = new GoodView(mContext);
+                        goodView.setImage(R.mipmap.good);
+                        goodView.show(iv_good);
 
-                    mPresenter.addGood(request);
+                        mPresenter.addGood(request);
+                    } else {
+                        final GoodView goodView = new GoodView(mContext);
+                        goodView.setImage(R.mipmap.good_un);
+                        goodView.show(iv_good);
+
+                        mPresenter.addGood(request);
+                    }
                 } else {
-                    final GoodView goodView = new GoodView(mContext);
-                    goodView.setImage(R.mipmap.good_un);
-                    goodView.show(iv_good);
-
-                    mPresenter.addGood(request);
+                    loginDialog.show();
+                    ToastUtils.showShort(mContext, getString(R.string.login_tip));
                 }
             }
         });
@@ -519,7 +531,7 @@ public class NewsDetailsRvActivity
         } else if (v == tv_input) {
             editLisenter();
         } else if (v == rl_commont) {
-            if(adapter.getItemCount() > 1) {
+            if (adapter.getItemCount() > 1) {
                 smoothMoveToPosition(rv_commit, 1);
             }
         } else if (v == iv_facebook) {
@@ -558,7 +570,6 @@ public class NewsDetailsRvActivity
         });
         //EdittextUtlis.setSendText(getString(R.string.ok));
     }
-
 
 
     @Override
@@ -624,7 +635,7 @@ public class NewsDetailsRvActivity
             webSr.finishRefresh();
             adapter.setNewData(response.getData());
         } else {
-            if(response.getData() != null && response.getData().size() >0) {
+            if (response.getData() != null && response.getData().size() > 0) {
                 page += 1;
             }
             webSr.finishLoadmore();
@@ -635,9 +646,9 @@ public class NewsDetailsRvActivity
     @Override
     public void commont(NewsCommonResponse response) {
 
-        if(response.getData().getGold() > 0){
-            ToastUtils.showGoldCoinToast(mContext,response.getMsg(),response.getData().getGold() + "");
-        }else {
+        if (response.getData().getGold() > 0) {
+            ToastUtils.showGoldCoinToast(mContext, response.getMsg(), response.getData().getGold() + "");
+        } else {
             ToastUtils.showShort(mContext, response.getMsg());
         }
 
@@ -795,6 +806,7 @@ public class NewsDetailsRvActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        loginDialog.registerCallBack(requestCode, resultCode, data, false);
         if (mTwitterLogin != null) {
             mTwitterLogin.setActivityResult(requestCode, resultCode, data);
         }

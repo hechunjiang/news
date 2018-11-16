@@ -90,7 +90,6 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
         return R.layout.fragment_task;
     }
 
-
     @Override
     protected void initView(View v) {
         rv_task = v.findViewById(R.id.rv_task);
@@ -277,9 +276,10 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
             List<TaskListNewResponse.DataBean.ListBean> list1 = d.getList();
             if (list1 != null) {
                 for (TaskListNewResponse.DataBean.ListBean listBean : list1) {
-                    TaskTest taskTest1 = new TaskTest(listBean);
 
+                    TaskTest taskTest1 = new TaskTest(listBean);
                     list.add(taskTest1);
+
                 }
             }
 
@@ -402,6 +402,7 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
                 });
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -413,9 +414,9 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
     public void showErrorTip(int code, String msg) {
         mDialog.dismiss();
         refresh.finishRefresh();
-        if(code == 100002){
+        if (code == 100002) {
             mEmptyLayout.setErrorType(EmptyLayout.NO_DATA, EmptyLayout.NET_WORK_ERROR);
-        }else {
+        } else {
             mEmptyLayout.setErrorType(EmptyLayout.HIDE_LAYOUT, -1);
             mEmptyLayout.setVisibility(View.GONE);
             ToastUtils.showShort(mContext, msg);
@@ -432,7 +433,7 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshTaskEvent(MessageEvent refreshTaskEvent) {
-        if(refreshTaskEvent.getMessage().equals(Common.REFRESH_TASK_LIST)) {
+        if (refreshTaskEvent.getMessage().equals(Common.REFRESH_TASK_LIST)) {
             mPresenter.getTaskListNew(new TaskListRequest());
         }
     }
@@ -487,7 +488,8 @@ public class TaskFragment extends BaseFragment<TaskPresenter, TaskModel> impleme
         if ("indexNews".equals(split[1])) { //首页新闻
             EventBus.getDefault().post(new MessageEvent(Common.SELECT_MAIN));
         } else if ("login".equals(split[1])) { //登陆
-            if(isLogin()){}
+            if (isLogin()) {
+            }
         } else if ("register".equals(split[1])) { //注册
 
         } else if ("bindIns".equals(split[1])) { //绑定ins页面

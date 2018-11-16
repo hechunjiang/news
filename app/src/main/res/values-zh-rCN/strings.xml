@@ -5,7 +5,7 @@
     <string name="facebook_app_id">425325671330602</string>
     <string name="fb_login_protocol_scheme">fb425325671330602</string>
     <!--facebook denglu-->
-    <string name="app_name">ToToNews</string>
+    <string name="mynewsname">ToToNews</string>
     <string name="back">返回</string>
     <string name="clear">清除</string>
     <string name="no_comment">没有评论</string>

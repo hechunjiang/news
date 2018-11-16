@@ -28,12 +28,12 @@
             android:orientation="horizontal">
 
             <View
-                android:visibility="gone"
                 android:id="@+id/view_left"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_weight="1"
-                android:background="@color/task_un_bar" />
+                android:background="@color/task_un_bar"
+                />
 
             <TextView
                 android:id="@+id/tv_middle"

@@ -77,7 +77,7 @@ public class MyApplication extends Application {
 
     private void initFacebook() {
         FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        AppEventsLogger.activateApp(this,"");
     }
 
     private void setFresco() {

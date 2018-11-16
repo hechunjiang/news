@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--英语-->
 <resources>
+    <string name="mynewsname">ToToNews</string>
     <string name="back">Back</string>
     <string name="clear">clear</string>
     <string name="no_comment">No comment</string>
@@ -26,7 +27,7 @@
     <string name="me_l_setting">Settings</string>
     <string name="me_age">AGE&#160;%1$d</string>
     <string name="task">Daily Earning Tasks</string>
-    <string name="you_not_installed_twitter">You've not installed Twitter App,Please re-try after installation.</string>
+    <string name="you_not_installed_twitter">You\'ve not installed Twitter App,Please re-try after installation.</string>
     <string name="or">or</string>
     <string name="email_login">email login</string>
     <string name="by_signing_up_you_agree_to_the_privacy_policy_including_use_cookie_use">By signing up,you agree to the Privacy Policy，Including use Cookie Use。</string>
@@ -151,6 +152,10 @@
     <string name="bind" translatable="false">Bind</string>
     <string name="successful">Successful</string>
     <string name="bind_email_success">Email address linked</string>
-
+    <!--谷歌登录所需的client id-->
+    <string name="server_client_id">25829066311-c4nfpmrihs6cant98cj7i40qps2eelfv.apps.googleusercontent.com</string>
+    <!--facebook denglu-->
+    <string name="facebook_app_id">425325671330602</string>
+    <string name="fb_login_protocol_scheme">fb425325671330602</string>
 
 </resources>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><!--英语-->
 <resources>
+    <!--谷歌登录所需的client id-->
+    <string name="server_client_id">25829066311-c4nfpmrihs6cant98cj7i40qps2eelfv.apps.googleusercontent.com</string>
+    <!--facebook denglu-->
+    <string name="facebook_app_id">425325671330602</string>
+    <string name="fb_login_protocol_scheme">fb425325671330602</string>
+    <string name="mynewsname">ToToNews</string>
     <string name="back">Back</string>
     <string name="clear">clear</string>
     <string name="no_comment">No comment</string>

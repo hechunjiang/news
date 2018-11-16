@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--泰语-->
 <resources>
+    <string name="mynewsname">ToToNews</string>
     <string name="back">กลับ</string>
     <string name="clear">เคลียร์</string>
     <string name="no_comment">ไม่มีข้อคิดเห็น</string>
@@ -137,6 +138,7 @@
     <string name="minits">นาทีก่อน</string>
     <string name="minute">หนึ่งนาทีก่อน</string>
     <string name="justnow">เมื่อกี้</string>
-
+    <string name="facebook_app_id">425325671330602</string>
+    <string name="fb_login_protocol_scheme">fb425325671330602</string>
 
 </resources>

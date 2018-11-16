@@ -70,7 +70,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="19dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="4dp">
 
         <TextView
             android:id="@+id/tv_time"
@@ -119,9 +119,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:background="@color/cE4E4E4" />
 </LinearLayout>

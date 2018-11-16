@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.news.mobilephone.R;
 import com.news.mobilephone.entiyt.TaskListResponse;
+import com.news.mobilephone.utils.LogUtil;
 
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class TimeLineAdapter extends BaseQuickAdapter<TaskListResponse.DataBeanX
 
         helper.setText(R.id.tv_day, "Day" + item.getDay())
                 .setText(R.id.tv_num, item.getGold_tribute() + "");
+
+        LogUtil.showLog("adapterPosition", adapterPosition + "");
 
         if (day == adapterPosition) {
             helper.setBackgroundColor(R.id.view_left, ContextCompat.getColor(mContext, R.color.task_bar))

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -121,4 +122,12 @@ public class NewsInforAdapter extends BaseMultiItemQuickAdapter<NewsInfoResponse
         }
     }
 
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+//        public static final String SPACE_SINGLE = "&#160;";//比一个空格稍宽
+//        public static final String SPACE_SEAT = "&#160;&#160;&#8201;";//一个汉字宽度
+//        public static final String SYMBOL_SEAT = "&#8201;";//一个符号宽度
+    }
 }

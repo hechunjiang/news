@@ -41,6 +41,6 @@
     <color name="task_bar">@color/colorAccent</color>
     <color name="c_cdcdcd">#cdcdcd</color>
     <color name="cffc2c2c2">#ffc2c2c2</color>
-    <color name="cE4E4E4">#E4E4E4</color>
+    <color name="cE4E4E4">#f4f4f4</color>
 
 </resources>

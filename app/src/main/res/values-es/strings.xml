@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--西班牙语-->
 <resources>
+    <string name="mynewsname">ToToNews</string>
     <string name="back">Volver</string>
     <string name="clear">Limpiar</string>
     <string name="no_comment">No comentarios</string>
@@ -137,7 +138,8 @@
     <string name="minits">hace minutos</string>
     <string name="minute">hace minuto</string>
     <string name="justnow">ahora</string>
-
+    <string name="facebook_app_id">425325671330602</string>
+    <string name="fb_login_protocol_scheme">fb425325671330602</string>
 
     ////////////
     <string name="me_shared_code">Comparta su Código de invitación en Facebook y otras plataformas, deje que más personas se conviertan en sus amigos , obtendrá mucho monedas de oro como recompensa</string>

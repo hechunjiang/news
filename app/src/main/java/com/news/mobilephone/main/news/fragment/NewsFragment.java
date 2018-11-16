@@ -63,6 +63,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
     private FaceBookShare mFaceBookShare;
     private WhatsAppShare whatsAppShare;
     private OpenTheTreasureBoxDialog mOpenTheTreasureBoxDialog;
+    private int mPositon;
 
 
     @Override
@@ -90,7 +91,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
         unlike.setBounds(0, 0, unlike.getMinimumWidth(), unlike.getMinimumHeight());
         like.setBounds(0, 0, like.getMinimumWidth(), like.getMinimumHeight());
 
-        inforAdapter = new NewsInforAdapter(new ArrayList<NewsInfoResponse.DataBeanX.DataBean>(),getActivity());
+        inforAdapter = new NewsInforAdapter(new ArrayList<NewsInfoResponse.DataBeanX.DataBean>(), getActivity());
         rv_news.setLayoutManager(new LinearLayoutManager(mContext));
         rv_news.setAdapter(inforAdapter);
     }
@@ -151,6 +152,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
         inforAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                mPositon = position;
                 NewsInfoResponse.DataBeanX.DataBean response = (NewsInfoResponse.DataBeanX.DataBean) adapter.getItem(position);
 //                islike = !response.isIs_liked();
                 switch (adapter.getItemViewType(position)) {
@@ -336,6 +338,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
                 @Override
                 public void getShareOk(String response) {
                     LogUtil.showLog("twtter分享成功");
+                    inforAdapter.getData().get(mPositon).setShare_count((Integer.parseInt(inforAdapter.getData().get(mPositon).getShare_count()) + 1) + "");
                     mPresenter.shareVisit(Common.SHARE_TYPE_TWITTER + "");
 
                 }
@@ -359,6 +362,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
                     @Override
                     public void onSuccess(Object o) {
                         LogUtil.showLog("face 分享成功");
+                        inforAdapter.getData().get(mPositon).setShare_count((Integer.parseInt(inforAdapter.getData().get(mPositon).getShare_count()) + 1) + "");
                         mPresenter.shareVisit(Common.SHARE_TYPE_FACEBOOK + "");
 
                         //ToastUtils.showShort(mContext, getString(R.string.sharedSuccess));
@@ -386,6 +390,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
                 @Override
                 public void getShareOk(String response) {
                     //ToastUtils.showShort(mContext, getString(R.string.sharedSuccess));
+                    inforAdapter.getData().get(mPositon).setShare_count((Integer.parseInt(inforAdapter.getData().get(mPositon).getShare_count()) + 1) + "");
                     mPresenter.shareVisit(Common.SHARE_TYPE_LINKEDIN + "");
 
 
@@ -399,6 +404,7 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
             mLinkedInPlatform.linkedInShare(jsShareType);
         } else if (type == Common.SHARE_TYPE_WHATS) {
             whatsAppShare.shareLink(jsShareType.getUrl());
+            inforAdapter.getData().get(mPositon).setShare_count((Integer.parseInt(inforAdapter.getData().get(mPositon).getShare_count()) + 1) + "");
             mPresenter.shareVisit(Common.SHARE_TYPE_WHATS + "");
 
         }
@@ -406,8 +412,8 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
 
     @Override
     public void sharednewsSuccess() {
-
-        ToastUtils.showShort(mContext, getString(R.string.success));
+        inforAdapter.notifyItemChanged(mPositon, 1);
+//        ToastUtils.showShort(mContext, getString(R.string.success));
 
     }
 
@@ -421,7 +427,6 @@ public class NewsFragment extends BaseFragment<NewsListPresenter, NewsListModel>
             mOpenTheTreasureBoxDialog.showDialog(count);
         }
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
