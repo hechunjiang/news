@@ -21,20 +21,14 @@ import com.news.mobilephone.main.web.model.ShareModel;
  */
 public class WebPresenter extends BasePresenter {
     private JsWebView mJsWebView;
-    private Context mContext;
     private ShareModel mShareModel;
-    private Handler mHandler = new Handler();
 
     public WebPresenter(JsWebView jsWebView, Context context) {
         mJsWebView = jsWebView;
         mContext = context;
-        mShareModel = new ShareModel(context);
+        mShareModel = new ShareModel();
     }
 
-    public WebPresenter(Context context) {
-        mContext = context;
-        mShareModel = new ShareModel(context);
-    }
 
     /**
      * 分享计数

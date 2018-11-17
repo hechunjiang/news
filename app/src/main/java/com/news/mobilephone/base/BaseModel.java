@@ -5,22 +5,15 @@ import com.news.mobilephone.MyApplication;
 import com.news.mobilephone.http.MyRetrofit;
 
 /**
- * auther: sunfuyi
- * data: 2018/5/12
- * effect:
+ * 作者：created by hcj
+ * 邮箱：2654313873@qq.com
+ * 日期：2018/11/5 17
  */
 public abstract class BaseModel {
 
-    protected MyRetrofit myRetrofit;
-
     protected MyRetrofit getRetrofit() {
-        if (myRetrofit == null) {
-            myRetrofit = new MyRetrofit(MyApplication.getAppContext(), null);
-        }
-        return myRetrofit;
+
+        return MyRetrofit.getInstance();
     }
 
-    protected MyRetrofit getRetrofit(String https) {
-        return new MyRetrofit(MyApplication.getAppContext(), https);
-    }
 }

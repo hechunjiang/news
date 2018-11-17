@@ -392,7 +392,7 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
         mDialog.show();
 
         final UserSpCache mUserSpCache = UserSpCache.getInstance(MyApplication.getAppContext());
-        MyRetrofit.getInstance(mContext)
+        MyRetrofit.getInstance()
                 .onLogin(request, new DataCallBack() {
                     @Override
                     public void onComplete() {
@@ -452,7 +452,7 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
             thirdRequest.setTask("1");
         }
 
-        MyRetrofit.getInstance(mContext)
+        MyRetrofit.getInstance()
                 .checkIsLogin(thirdRequest, new DataCallBack() {
                     @Override
                     public void onComplete() {
@@ -507,7 +507,7 @@ public class CustomLoginDialog extends Dialog implements View.OnClickListener, G
         ThridLoginRequest request = new ThridLoginRequest();
         request.setUser_id(user_id);
         request.setLogin_source(loginType);
-        MyRetrofit.getInstance(mContext)
+        MyRetrofit.getInstance()
                 .thridLogin(request, new DataCallBack() {
                     @Override
                     public void onComplete() {

@@ -2,6 +2,7 @@ package com.news.mobilephone.http;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.news.mobilephone.BuildConfig;
 import com.news.mobilephone.MyApplication;
@@ -47,8 +48,9 @@ import com.news.mobilephone.utils.UserSpCache;
 import java.io.File;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -66,49 +68,43 @@ import rx.schedulers.Schedulers;
 
 public class MyRetrofit {
     private Context mContext;
-    private static MyRetrofit mInstance;
+    private volatile static MyRetrofit mInstance;
     private HttpService mHttpService;
 
-    public MyRetrofit(Context mContext) {
-        this.mContext = mContext;
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        //设定日志级别
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+    public static MyRetrofit getInstance() {
+        if (mInstance == null) {
+            synchronized (MyRetrofit.class) {
+                if (mInstance == null) {
+                    mInstance = new MyRetrofit();
+                }
+            }
+        }
+        return mInstance;
+    }
+
+    public MyRetrofit() {
+        this.mContext = MyApplication.getAppContext();
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(
+                new HttpLoggingInterceptor.Logger() {
+                    @Override
+                    public void log(String message) {
+                        Log.d("TAG", "OkHttpClient ==== Message ===== " + message);
+                    }
+                }
+
+
+        ).setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())
                 .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
-                //添加拦截器
-                .addInterceptor(httpLoggingInterceptor)
                 .addInterceptor(interceptor)
                 .build();
-        Retrofit retrofit = new Retrofit
-                .Builder()
-                .client(okHttpClient)
-                .baseUrl(BuildConfig.BASE_URL)
-//                 .baseUrl(Api.BASE_URL)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        mHttpService = retrofit.create(HttpService.class);
-    }
 
-    public MyRetrofit(Context mContext, String httpUrl) {
-        this.mContext = mContext;
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .retryOnConnectionFailure(true)
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())
-                .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
-                .addInterceptor(interceptor)
-                .build();
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .client(okHttpClient)
@@ -120,29 +116,43 @@ public class MyRetrofit {
         mHttpService = retrofit.create(HttpService.class);
     }
 
-    public static MyRetrofit getInstance(Context context, String httpUrl) {
-        if (mInstance == null) {
-            synchronized (MyRetrofit.class) {
-                if (mInstance == null) {
-                    mInstance = new MyRetrofit(context, httpUrl);
-                }
-            }
-        }
-        return mInstance;
-    }
-
-    public static MyRetrofit getInstance(Context context) {
-
-        synchronized (MyRetrofit.class) {
-            mInstance = new MyRetrofit(context);
-        }
-        return mInstance;
-    }
 
     public HttpService getService() {
         return mHttpService;
     }
 
+    public static MultipartBody filesToMultipartBody(List<File> files) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+
+        for (File file : files) {
+            // TODO: 16-4-2  这里为了简单起见，没有判断file的类型
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+            builder.addFormDataPart("aFile", file.getName(), requestBody);
+        }
+
+        builder.setType(MultipartBody.FORM);
+        MultipartBody multipartBody = builder.build();
+        return multipartBody;
+    }
+
+    public static List<MultipartBody.Part> filesToMultipartBodyParts(List<File> files) {
+        List<MultipartBody.Part> parts = new ArrayList<>(files.size());
+        for (File file : files) {
+            // TODO: 16-4-2  这里为了简单起见，没有判断file的类型
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("aFile", file.getName(), requestBody);
+            parts.add(part);
+        }
+        return parts;
+    }
+
+    public static MultipartBody.Part fileToMultPartBody(File file) {
+
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("aFile", file.getName(), requestBody);
+        return part;
+
+    }
 
     /**
      * 临时登录

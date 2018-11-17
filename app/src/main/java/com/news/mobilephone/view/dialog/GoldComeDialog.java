@@ -292,7 +292,7 @@ public class GoldComeDialog extends Dialog implements JsWebView {
                 showBaseToast(mContext.getResources().getString(R.string.s_shared));
                 mWebPresenter.shareVisit(response, jsShareType.getActivity_type(), jsShareType.getType());
                 if (mShareModel == null) {
-                    mShareModel = new ShareModel(mContext);
+                    mShareModel = new ShareModel();
                 }
                 //2018-7-20 18:50 burgess
                 TaskRequestAdVideo taskRequest = new TaskRequestAdVideo();

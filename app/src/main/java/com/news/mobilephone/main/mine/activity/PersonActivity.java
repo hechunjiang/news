@@ -55,7 +55,7 @@ import java.util.Calendar;
 
 public class PersonActivity extends BaseActivity<PersonPresenter, PersonModel> implements PersonContract.View {
 
-    private String etName,mFilePath, mMarkId = "";
+    private String etName, mFilePath, mMarkId = "";
     private EditText perNickname, signature;
     private TextView nickNameLenth, genderTv, perAge, btnSend, textView;
     private ImageView img_output;
@@ -295,7 +295,6 @@ public class PersonActivity extends BaseActivity<PersonPresenter, PersonModel> i
                 if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap1 = BitmapFactory.decodeStream(getContentResolver().openInputStream(mUriSave));
-//                        headImage.setImageBitmap(bitmap1);
                         if (bitmap1 != null) {
                             file = ImageUtils.saveBitmapToSdCard(bitmap1);
                         }

@@ -54,5 +54,4 @@ public class EarnModel extends EarnActivityContract.Model {
         });
     }
 
-    //分享
 }

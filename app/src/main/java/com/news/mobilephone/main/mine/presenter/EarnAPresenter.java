@@ -29,7 +29,7 @@ public class EarnAPresenter extends EarnActivityContract.Presenter {
     @Override
     public void getDatas() {
         if (mView == null) return;
-        MyRetrofit.getInstance(mContext).apprenticePageData(new DataCallBack() {
+        MyRetrofit.getInstance().apprenticePageData(new DataCallBack() {
             @Override
             public void onComplete() {
 

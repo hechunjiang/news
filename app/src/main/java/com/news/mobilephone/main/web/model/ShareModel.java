@@ -3,6 +3,7 @@ package com.news.mobilephone.main.web.model;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.news.mobilephone.MyApplication;
 import com.news.mobilephone.R;
 import com.news.mobilephone.base.BaseResponse;
 import com.news.mobilephone.entiyt.TaskResponse;
@@ -20,16 +21,10 @@ import com.news.mobilephone.utils.ToastUtils;
  * 日期：2018/11/5 13
  */
 public class ShareModel {
-    MyRetrofit mMyRetrofit;
-    private Context mContext;
 
-    public ShareModel(Context context) {
-        this.mContext = context;
-        mMyRetrofit = new MyRetrofit(context);
-    }
 
     public void videoReport(VideoReportRequest request, final DataCallBack dataCacheBack) {
-        mMyRetrofit.videoRepost(request, new DataCallBack() {
+        MyRetrofit.getInstance().videoRepost(request, new DataCallBack() {
             @Override
             public void onComplete() {
                 dataCacheBack.onComplete();
@@ -49,7 +44,7 @@ public class ShareModel {
 
 
     public void shareVisit(ShareVisitRequest request, final DataCallBack dataCacheBack) {
-        mMyRetrofit.shareVisit(request, new DataCallBack() {
+        MyRetrofit.getInstance().shareVisit(request, new DataCallBack() {
             @Override
             public void onComplete() {
                 dataCacheBack.onComplete();
@@ -68,7 +63,7 @@ public class ShareModel {
     }
 
     public void getShareInfo(final DataCallBack dataCacheBack) {
-        mMyRetrofit.getShareInfo(new DataCallBack() {
+        MyRetrofit.getInstance().getShareInfo(new DataCallBack() {
             @Override
             public void onComplete() {
                 dataCacheBack.onComplete();
@@ -88,7 +83,7 @@ public class ShareModel {
 
 
     public void getAdVideoByTask(final TaskRequestAdVideo request, final DataCallBack cacheBack, final int coins, final String type) {
-        mMyRetrofit.getAdVideoByTask(request, new DataCallBack() {
+        MyRetrofit.getInstance().getAdVideoByTask(request, new DataCallBack() {
             @Override
             public void onComplete() {
                 cacheBack.onComplete();
@@ -98,10 +93,10 @@ public class ShareModel {
             public void onSucceed(String json) {
                 TaskResponse taskResponse = new Gson().fromJson(json, TaskResponse.class);
                 if (request.getId().equals(TaskRequest.TASK_ID_READ_SHARE_AD + "")) {
-                    String message = mContext.getString(R.string.sharing_reward);
+                    String message = MyApplication.getAppContext().getString(R.string.sharing_reward);
                     String addMessage = "";
-                    addMessage = "+" + 10 + "" + mContext.getString(R.string.me_coins);
-                    ToastUtils.showZDYToast(mContext, addMessage, message);
+                    addMessage = "+" + 10 + "" + MyApplication.getAppContext().getString(R.string.me_coins);
+                    ToastUtils.showZDYToast(MyApplication.getAppContext(), addMessage, message);
                 }
                 cacheBack.onSucceed(taskResponse.getData().getCount() + "");
             }

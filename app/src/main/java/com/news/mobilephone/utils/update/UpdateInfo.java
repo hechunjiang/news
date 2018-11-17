@@ -191,7 +191,7 @@ public class UpdateInfo {
         if (!apk.exists()) {
             apk.mkdirs();
         }
-        MyRetrofit.getInstance(activity, null).getService()
+        MyRetrofit.getInstance().getService()
                 .downloadApk(versionInfo.getApk_url())
                 .subscribeOn(Schedulers.io())
                 .map(new Func1<ResponseBody, File>() {
